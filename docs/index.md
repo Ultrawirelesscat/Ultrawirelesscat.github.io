@@ -5,6 +5,9 @@ hero:
   name: Ultrawirelesscat的小站
   text: 编程笔记与生活随笔
   tagline: 把学到的东西写下来，才真正属于自己
+  image:
+    src: /hero.svg
+    alt: 代码与笔记
   actions:
     - theme: brand
       text: 开始阅读

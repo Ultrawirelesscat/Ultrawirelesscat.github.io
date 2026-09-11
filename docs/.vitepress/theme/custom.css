@@ -1,45 +1,176 @@
-/* 这里放你自己的全局样式，覆盖 VitePress 默认主题变量即可 */
+/* ============================================================
+   清新渐变风主题
+   ------------------------------------------------------------
+   配色思路：浅蓝主色 + 青色/薄荷绿辅助色，浅色模式强调可读性，
+   深色模式用深一点的底色配亮色点缀。
+   想整体换色，只改下面这组变量即可。
+   ============================================================ */
 
 :root {
-  /*
-   * 主题色：浅蓝色系
-   * 浅色模式下用稍深一点的天蓝（#0284c7），保证白底上文字对比度达标；
-   * 想要更淡可以把 --vp-c-brand-1 调成 #0ea5e9 或 #38bdf8，但链接会变浅。
-   */
+  /* 主色：亮蓝 */
   --vp-c-brand-1: #0284c7;
   --vp-c-brand-2: #0369a1;
   --vp-c-brand-3: #075985;
   --vp-c-brand-soft: rgba(56, 189, 248, 0.14);
-}
 
-.dark {
-  /* 深色模式下用明亮浅蓝，在暗底上更通透 */
-  --vp-c-brand-1: #7dd3fc;
-  --vp-c-brand-2: #38bdf8;
-  --vp-c-brand-3: #0ea5e9;
-  --vp-c-brand-soft: rgba(125, 211, 252, 0.16);
-}
+  /* 辅助色 */
+  --c-cyan: #06b6d4;
+  --c-teal: #14b8a6;
+  --c-violet: #8b5cf6;
+  --c-amber: #f59e0b;
 
-/* 顺带把默认按钮和首页 Hero 的渐变也调成蓝色系 */
-:root {
+  --grad-brand: linear-gradient(120deg, #38bdf8 0%, #22d3ee 45%, #2dd4bf 100%);
+  --grad-brand-soft: linear-gradient(135deg, rgba(56, 189, 248, 0.12), rgba(45, 212, 191, 0.12));
+
+  --card-shadow: 0 1px 2px rgba(2, 132, 199, 0.06), 0 8px 24px -12px rgba(2, 132, 199, 0.28);
+  --card-shadow-hover: 0 2px 4px rgba(2, 132, 199, 0.08), 0 18px 40px -18px rgba(2, 132, 199, 0.42);
+
+  /* 按钮 */
   --vp-button-brand-bg: var(--vp-c-brand-1);
   --vp-button-brand-hover-bg: var(--vp-c-brand-2);
   --vp-button-brand-active-bg: var(--vp-c-brand-3);
   --vp-button-brand-border: transparent;
 }
 
-:root {
-  --vp-home-hero-name-color: transparent;
-  --vp-home-hero-name-background: linear-gradient(120deg, #38bdf8 30%, #0284c7);
-  --vp-home-hero-image-background-image: linear-gradient(
-    -45deg,
-    rgba(56, 189, 248, 0.5) 50%,
-    rgba(125, 211, 252, 0.5) 50%
-  );
-  --vp-home-hero-image-filter: blur(44px);
+.dark {
+  --vp-c-brand-1: #7dd3fc;
+  --vp-c-brand-2: #38bdf8;
+  --vp-c-brand-3: #0ea5e9;
+  --vp-c-brand-soft: rgba(125, 211, 252, 0.16);
+
+  --c-cyan: #22d3ee;
+  --c-teal: #2dd4bf;
+  --c-violet: #a78bfa;
+  --c-amber: #fbbf24;
+
+  --grad-brand: linear-gradient(120deg, #7dd3fc 0%, #22d3ee 45%, #5eead4 100%);
+  --grad-brand-soft: linear-gradient(135deg, rgba(56, 189, 248, 0.14), rgba(45, 212, 191, 0.14));
+
+  --card-shadow: 0 1px 2px rgba(0, 0, 0, 0.5), 0 10px 30px -14px rgba(56, 189, 248, 0.3);
+  --card-shadow-hover: 0 2px 6px rgba(0, 0, 0, 0.55), 0 20px 46px -18px rgba(56, 189, 248, 0.45);
 }
 
-/* 正文行宽，读起来更舒服 */
+/* ---------- 全局：柔和的彩色光斑背景 ---------- */
+
+body {
+  background-image:
+    radial-gradient(920px 480px at 8% -8%, rgba(56, 189, 248, 0.16), transparent 70%),
+    radial-gradient(820px 460px at 100% 0%, rgba(45, 212, 191, 0.14), transparent 72%),
+    radial-gradient(680px 420px at 50% 104%, rgba(139, 92, 246, 0.1), transparent 70%);
+  background-attachment: fixed;
+}
+
+.dark body {
+  background-image:
+    radial-gradient(920px 480px at 8% -8%, rgba(56, 189, 248, 0.12), transparent 70%),
+    radial-gradient(820px 460px at 100% 0%, rgba(45, 212, 191, 0.1), transparent 72%),
+    radial-gradient(680px 420px at 50% 104%, rgba(139, 92, 246, 0.12), transparent 70%);
+}
+
+/* 顶栏：半透明毛玻璃 + 渐变细线 */
+.VPNav {
+  backdrop-filter: saturate(180%) blur(12px);
+  background-color: color-mix(in srgb, var(--vp-c-bg) 78%, transparent);
+}
+
+.VPNav::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 2px;
+  background: var(--grad-brand);
+  opacity: 0.5;
+}
+
+/* ---------- 首页 Hero ---------- */
+
+.VPHero .name,
+.VPHero .text {
+  background-image: var(--grad-brand);
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+  -webkit-text-fill-color: transparent;
+}
+
+.VPHero .tagline {
+  color: var(--vp-c-text-2);
+}
+
+/* 插图背后的彩色光晕 */
+.VPHero .image-bg {
+  background-image: var(--grad-brand);
+  filter: blur(52px);
+  opacity: 0.55;
+}
+
+.VPHero .image-container {
+  transform: none;
+}
+
+.VPHero .VPImage {
+  width: 100%;
+  max-width: 420px;
+  height: auto;
+  filter: drop-shadow(0 18px 40px rgba(2, 132, 199, 0.24));
+}
+
+/* Hero 按钮：主按钮带渐变 */
+.VPHero .actions .VPButton.brand {
+  background-image: var(--grad-brand);
+  border: none;
+  box-shadow: 0 10px 24px -12px rgba(2, 132, 199, 0.7);
+}
+
+.VPHero .actions .VPButton.brand:hover {
+  filter: brightness(1.06);
+  transform: translateY(-1px);
+}
+
+/* ---------- 首页功能卡片 ---------- */
+
+.VPFeatures .VPFeature {
+  position: relative;
+  border: 1px solid var(--vp-c-divider);
+  border-radius: 16px;
+  background: var(--vp-c-bg-soft);
+  background-image: var(--grad-brand-soft);
+  transition: transform 0.25s, box-shadow 0.25s, border-color 0.25s;
+}
+
+.VPFeatures .VPFeature::before {
+  content: '';
+  position: absolute;
+  inset: 0 0 auto 0;
+  height: 4px;
+  border-radius: 16px 16px 0 0;
+  background: var(--grad-brand);
+  opacity: 0.9;
+}
+
+.VPFeatures .VPFeature:hover {
+  transform: translateY(-4px);
+  border-color: var(--vp-c-brand-1);
+  box-shadow: var(--card-shadow-hover);
+}
+
+/* 图标加彩色圆底 */
+.VPFeatures .VPFeature .icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  font-size: 22px;
+  border-radius: 12px;
+  background: var(--grad-brand-soft);
+  box-shadow: inset 0 0 0 1px rgba(56, 189, 248, 0.22);
+}
+
+/* ---------- 正文 ---------- */
+
 .vp-doc {
   max-width: 720px;
   margin: 0 auto;
@@ -49,7 +180,135 @@
   font-size: 30px;
 }
 
+/* 各级标题：h2 前面加一条渐变小竖条 */
+.vp-doc h2 {
+  border-top: 1px solid var(--vp-c-divider);
+  padding-top: 26px;
+}
+
+.vp-doc h2::before {
+  content: '';
+  display: inline-block;
+  width: 6px;
+  height: 0.82em;
+  margin-right: 10px;
+  border-radius: 3px;
+  background: var(--grad-brand);
+  vertical-align: -0.06em;
+}
+
+.vp-doc h3 {
+  color: var(--vp-c-text-1);
+}
+
+/* 链接：渐变下划线 */
+.vp-doc a {
+  text-decoration: none;
+  background-image: linear-gradient(var(--vp-c-brand-1), var(--vp-c-brand-1));
+  background-size: 0 1px;
+  background-repeat: no-repeat;
+  background-position: 0 100%;
+  transition: background-size 0.25s;
+}
+
+.vp-doc a:hover {
+  background-size: 100% 1px;
+}
+
+/* 引用块：加一条渐变色条 */
+.vp-doc blockquote {
+  position: relative;
+  border-left: none;
+  border-radius: 0 12px 12px 0;
+  background: var(--grad-brand-soft);
+  padding: 14px 18px 14px 22px;
+  color: var(--vp-c-text-2);
+}
+
+.vp-doc blockquote::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 4px;
+  border-radius: 4px;
+  background: var(--grad-brand);
+}
+
+/* 表格：表头带渐变 */
+.vp-doc table {
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.vp-doc th {
+  background-image: var(--grad-brand-soft);
+  color: var(--vp-c-text-1);
+  font-weight: 600;
+}
+
+.vp-doc tr:nth-child(2n) {
+  background-color: var(--vp-c-bg-soft);
+}
+
+/* 行内代码：彩色小标签 */
+.vp-doc :not(pre) > code {
+  color: var(--vp-c-brand-1);
+  background-color: var(--vp-c-brand-soft);
+  border-radius: 6px;
+  padding: 2px 6px;
+}
+
+/* 代码块：圆角 + 柔和阴影 */
+.vp-doc div[class*='language-'] {
+  border-radius: 12px;
+  box-shadow: var(--card-shadow);
+}
+
+/* 提示容器（::: tip 等）圆角 */
+.vp-doc .custom-block {
+  border-radius: 12px;
+}
+
 /* 图片圆角 */
 .vp-doc img {
-  border-radius: 8px;
+  border-radius: 12px;
+}
+
+/* 侧边栏当前项：左侧渐变条 */
+.VPSidebarItem.is-active > .item > .indicator,
+.VPSidebarItem.is-link.is-active > .item .link > .text {
+  color: var(--vp-c-brand-1);
+}
+
+/* 页脚：顶部渐变细线 */
+.VPFooter {
+  border-top: none;
+  position: relative;
+}
+
+.VPFooter::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  height: 2px;
+  background: var(--grad-brand);
+  opacity: 0.4;
+}
+
+/* ---------- 深色模式微调 ---------- */
+
+.dark .VPNav {
+  background-color: color-mix(in srgb, var(--vp-c-bg) 82%, transparent);
+}
+
+.dark .VPFeatures .VPFeature {
+  background-image: linear-gradient(135deg, rgba(56, 189, 248, 0.1), rgba(45, 212, 191, 0.08));
+}
+
+.dark .vp-doc div[class*='language-'] {
+  border: 1px solid var(--vp-c-divider);
 }

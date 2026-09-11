@@ -42,16 +42,30 @@ defineProps({
 }
 
 .post-card {
+  position: relative;
+  overflow: hidden;
   border: 1px solid var(--vp-c-divider);
-  border-radius: 12px;
-  padding: 18px 20px;
+  border-radius: 14px;
+  padding: 20px 22px;
   background: var(--vp-c-bg-soft);
-  transition: border-color 0.25s, transform 0.25s;
+  background-image: var(--grad-brand-soft, linear-gradient(135deg, rgba(56, 189, 248, 0.12), rgba(45, 212, 191, 0.12)));
+  box-shadow: var(--card-shadow, 0 8px 24px -12px rgba(2, 132, 199, 0.28));
+  transition: border-color 0.25s, transform 0.25s, box-shadow 0.25s;
+}
+
+/* 顶部渐变色条 */
+.post-card::before {
+  content: '';
+  position: absolute;
+  inset: 0 0 auto 0;
+  height: 4px;
+  background: var(--grad-brand, linear-gradient(120deg, #38bdf8, #2dd4bf));
 }
 
 .post-card:hover {
   border-color: var(--vp-c-brand-1);
-  transform: translateY(-2px);
+  transform: translateY(-3px);
+  box-shadow: var(--card-shadow-hover, 0 18px 40px -18px rgba(2, 132, 199, 0.42));
 }
 
 .post-card__title {
@@ -66,6 +80,18 @@ defineProps({
   color: var(--vp-c-text-1);
   text-decoration: none;
   font-weight: 600;
+}
+
+/* 标题前的渐变小点 */
+.post-card__title a::before {
+  content: '';
+  display: inline-block;
+  width: 7px;
+  height: 7px;
+  margin-right: 10px;
+  border-radius: 50%;
+  background: var(--grad-brand, linear-gradient(120deg, #38bdf8, #2dd4bf));
+  vertical-align: 0.18em;
 }
 
 .post-card__title a:hover {
@@ -83,10 +109,11 @@ defineProps({
 }
 
 .post-card__category {
-  padding: 1px 8px;
+  padding: 1px 9px;
   border-radius: 999px;
   background: var(--vp-c-brand-soft);
   color: var(--vp-c-brand-1);
+  font-weight: 500;
 }
 
 .post-card__tag {

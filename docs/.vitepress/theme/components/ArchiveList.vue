@@ -37,8 +37,13 @@ const count = computed(() => props.posts.length)
 
 <style scoped>
 .archive__total {
-  color: var(--vp-c-text-2);
+  display: inline-block;
+  padding: 4px 14px;
+  border-radius: 999px;
+  background: var(--grad-brand-soft, rgba(56, 189, 248, 0.14));
+  color: var(--vp-c-brand-1);
   font-size: 14px;
+  font-weight: 500;
 }
 
 .archive__year h2 {
@@ -46,6 +51,18 @@ const count = computed(() => props.posts.length)
   padding-top: 24px;
   border-top: 1px solid var(--vp-c-divider);
   font-size: 20px;
+}
+
+/* 年份前的渐变小竖条 */
+.archive__year h2::before {
+  content: '';
+  display: inline-block;
+  width: 6px;
+  height: 0.82em;
+  margin-right: 10px;
+  border-radius: 3px;
+  background: var(--grad-brand, linear-gradient(120deg, #38bdf8, #2dd4bf));
+  vertical-align: -0.06em;
 }
 
 .archive__year ul {
@@ -58,7 +75,14 @@ const count = computed(() => props.posts.length)
   display: flex;
   gap: 16px;
   align-items: baseline;
-  padding: 6px 0;
+  padding: 8px 12px;
+  border-radius: 10px;
+  transition: background-color 0.2s, transform 0.2s;
+}
+
+.archive__year li:hover {
+  background: var(--grad-brand-soft, rgba(56, 189, 248, 0.12));
+  transform: translateX(3px);
 }
 
 .archive__year time {
@@ -71,6 +95,17 @@ const count = computed(() => props.posts.length)
 .archive__year a {
   color: var(--vp-c-text-1);
   text-decoration: none;
+}
+
+.archive__year a::before {
+  content: '';
+  display: inline-block;
+  width: 6px;
+  height: 6px;
+  margin-right: 10px;
+  border-radius: 50%;
+  background: var(--grad-brand, linear-gradient(120deg, #38bdf8, #2dd4bf));
+  vertical-align: 0.15em;
 }
 
 .archive__year a:hover {

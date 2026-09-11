@@ -54,7 +54,7 @@ defineProps({
   padding: 20px 22px;
   /* 蓝底页面上的白色卡片，靠明度差形成层次 */
   background: var(--card-surface, var(--vp-c-bg-soft));
-  box-shadow: var(--card-shadow, 0 8px 24px -12px rgba(139, 92, 246, 0.3));
+  box-shadow: var(--card-shadow, 0 8px 24px -12px rgba(96, 150, 96, 0.28));
   transition: border-color 0.25s, transform 0.25s, box-shadow 0.25s;
 }
 
@@ -64,25 +64,25 @@ defineProps({
   position: absolute;
   inset: 0 0 auto 0;
   height: 5px;
-  background: var(--c-line, #8b5cf6);
+  background: var(--c-line, #6fae6f);
 }
 
 .post-card:nth-child(3n + 1)::before {
-  background: var(--c-blue, #3b82f6);
+  background: var(--c-blue, #4aa3dd);
 }
 
 .post-card:nth-child(3n + 2)::before {
-  background: var(--c-violet, #8b5cf6);
+  background: var(--c-violet, #7fc97f);
 }
 
 .post-card:nth-child(3n)::before {
-  background: var(--c-pink, #ec4899);
+  background: var(--c-pink, #f0c987);
 }
 
 .post-card:hover {
   border-color: var(--vp-c-brand-1);
   transform: translateY(-4px);
-  box-shadow: var(--card-shadow-hover, 0 18px 40px -18px rgba(139, 92, 246, 0.45));
+  box-shadow: var(--card-shadow-hover, 0 18px 40px -18px rgba(96, 150, 96, 0.42));
 }
 
 .post-card__title {
@@ -107,7 +107,7 @@ defineProps({
   height: 7px;
   margin-right: 10px;
   border-radius: 50%;
-  background: var(--c-line, #8b5cf6);
+  background: var(--c-line, #6fae6f);
   vertical-align: 0.18em;
 }
 
@@ -132,11 +132,11 @@ defineProps({
   font-weight: 600;
   font-size: 12px;
   color: #ffffff;
-  background: var(--c-violet, #7c3aed);
+  background: var(--c-violet, #5c9e5c);
 }
 
 .post-card[data-category='生活随笔'] .post-card__category {
-  background: var(--c-pink, #db2777);
+  background: var(--c-pink, #d9a441);
 }
 
 .post-card__tag {

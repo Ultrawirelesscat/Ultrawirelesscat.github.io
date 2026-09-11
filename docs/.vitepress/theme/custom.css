@@ -1,35 +1,35 @@
 /* ============================================================
-   紫蓝粉 · 年轻感渐变主题
+   水彩田野 · 治愈系主题
    ------------------------------------------------------------
-   配色思路：
-   - 品牌色（链接、按钮）用明快蓝 #3b82f6 —— 蓝色可读性最好，
-     而且链接保持蓝色用户才不会困惑
-   - 紫 #a855f7 和粉 #ec4899 用在「装饰」上：渐变文字、卡片顶边、
-     导航细线、背景光斑、图标底色，负责年轻感
-   - 背景是淡薰衣草粉，卡片纯白浮起来
+   配色思路（贴合 docs/public/field.jpg 那张草地插画）：
+   - 品牌色（链接、按钮）用天空蓝 #4aa3dd —— 取插画里的天空
+   - 草绿 #7fc97f 用在「横线」类装饰：导航栏、页脚、标题竖条
+   - 暖奶油 #f0c987 做点缀，平衡绿色的冷感
+   - 正文墨绿炭色文字 #24312a，接近插画的勾线颜色
+   - 背景：首页把草地照片做成全宽 banner，文章页只留很淡的透出
    想整体换色，只改下面这组变量即可。
    ============================================================ */
 
 :root {
-  /* 品牌色：明快蓝 */
-  --vp-c-brand-1: #3b82f6;
-  --vp-c-brand-2: #2563eb;
-  --vp-c-brand-3: #1d4ed8;
-  --vp-c-brand-soft: rgba(59, 130, 246, 0.14);
+  /* 品牌色：天空蓝 */
+  --vp-c-brand-1: #4aa3dd;
+  --vp-c-brand-2: #3489c4;
+  --vp-c-brand-3: #266fa3;
+  --vp-c-brand-soft: rgba(74, 163, 221, 0.16);
 
   /* 装饰用的辅助色：蓝 / 紫 / 粉 */
-  --c-blue: #3b82f6;
-  --c-violet: #8b5cf6;
-  --c-pink: #ec4899;
+  --c-blue: #4aa3dd;
+  --c-violet: #7fc97f;
+  --c-pink: #f0c987;
 
   /* 所有「横线」类装饰统一用这个纯色（导航栏、页脚、标题、卡片顶边） */
-  --c-line: #8b5cf6;
+  --c-line: #6fae6f;
 
-  --grad-brand: linear-gradient(120deg, #4f8cf7 0%, #a855f7 52%, #ec4899 100%);
-  --grad-brand-soft: linear-gradient(135deg, rgba(79, 140, 247, 0.16), rgba(236, 72, 153, 0.16));
+  --grad-brand: linear-gradient(120deg, #7cc4e8 0%, #74c69d 55%, #b7d98a 100%);
+  --grad-brand-soft: linear-gradient(135deg, rgba(124, 196, 232, 0.18), rgba(116, 198, 157, 0.18));
 
-  --card-shadow: 0 1px 2px rgba(139, 92, 246, 0.08), 0 8px 24px -12px rgba(139, 92, 246, 0.3);
-  --card-shadow-hover: 0 2px 4px rgba(139, 92, 246, 0.1), 0 18px 40px -18px rgba(139, 92, 246, 0.45);
+  --card-shadow: 0 1px 2px rgba(96, 150, 96, 0.08), 0 8px 24px -12px rgba(96, 150, 96, 0.28);
+  --card-shadow-hover: 0 2px 4px rgba(96, 150, 96, 0.1), 0 18px 40px -18px rgba(96, 150, 96, 0.42);
 
   /* 按钮 */
   --vp-button-brand-bg: var(--vp-c-brand-1);
@@ -44,82 +44,101 @@
    * --vp-c-bg-soft 卡片 / 次级色块
    * --vp-c-bg-elv  浮层层级
    */
-  --vp-c-bg: #f4f2fd;
-  --vp-c-bg-alt: #ece9fa;
-  --vp-c-bg-soft: #f0edfc;
-  --vp-c-bg-elv: #faf9ff;
-  --vp-c-gutter: #e0dbf7;
+  --vp-c-bg: #f7faf5;
+  --vp-c-bg-alt: #eef5ea;
+  --vp-c-bg-soft: #f2f8ee;
+  --vp-c-bg-elv: #fcfdfa;
+  --vp-c-gutter: #dee9d7;
 
   /* 正文文字稍微加深，保证在蓝底上依然清楚 */
-  --vp-c-text-1: #1e1b30;
-  --vp-c-text-2: #4a4763;
-  --vp-c-text-3: #77728f;
+  --vp-c-text-1: #24312a;
+  --vp-c-text-2: #4a5a4e;
+  --vp-c-text-3: #78887b;
 
-  --vp-c-divider: #e2ddf8;
-  --vp-c-border: #d8d2f4;
+  --vp-c-divider: #e0e9db;
+  --vp-c-border: #d5e2cf;
 
   /* 卡片外壳：白底 + 淡蓝描边，和蓝底形成层次 */
   --card-surface: #ffffff;
-  --card-border: #ded7f7;
+  --card-border: #dbe7d4;
 }
 
 .dark {
   /* 深色模式品牌色改为亮紫，在暗底上更跳、更年轻 */
-  --vp-c-brand-1: #c4b5fd;
-  --vp-c-brand-2: #a78bfa;
-  --vp-c-brand-3: #8b5cf6;
-  --vp-c-brand-soft: rgba(167, 139, 250, 0.18);
+  --vp-c-brand-1: #9ed8f5;
+  --vp-c-brand-2: #7cc4e8;
+  --vp-c-brand-3: #5aa8d0;
+  --vp-c-brand-soft: rgba(124, 196, 232, 0.18);
 
-  --c-blue: #60a5fa;
-  --c-violet: #a78bfa;
-  --c-pink: #f472b6;
+  --c-blue: #7cc4e8;
+  --c-violet: #8fd694;
+  --c-pink: #f2d09a;
 
   /* 深色模式下线条用亮紫，保证在暗底上看得清 */
-  --c-line: #a78bfa;
+  --c-line: #8fd694;
 
-  --grad-brand: linear-gradient(120deg, #93c5fd 0%, #c084fc 52%, #f472b6 100%);
-  --grad-brand-soft: linear-gradient(135deg, rgba(168, 85, 247, 0.2), rgba(244, 114, 182, 0.2));
+  --grad-brand: linear-gradient(120deg, #9ed8f5 0%, #8fd694 55%, #cfe3a0 100%);
+  --grad-brand-soft: linear-gradient(135deg, rgba(124, 196, 232, 0.2), rgba(143, 214, 148, 0.2));
 
-  --card-shadow: 0 1px 2px rgba(0, 0, 0, 0.5), 0 10px 30px -14px rgba(168, 85, 247, 0.32);
-  --card-shadow-hover: 0 2px 6px rgba(0, 0, 0, 0.55), 0 20px 46px -18px rgba(168, 85, 247, 0.48);
+  --card-shadow: 0 1px 2px rgba(0, 0, 0, 0.5), 0 10px 30px -14px rgba(124, 196, 232, 0.32);
+  --card-shadow-hover: 0 2px 6px rgba(0, 0, 0, 0.55), 0 20px 46px -18px rgba(124, 196, 232, 0.48);
 
   /* 深色模式底色：深紫调，别用默认的纯灰黑 */
-  --vp-c-bg: #14101f;
-  --vp-c-bg-alt: #100c1a;
-  --vp-c-bg-soft: #1e1832;
-  --vp-c-bg-elv: #241d3b;
-  --vp-c-gutter: #2a2245;
+  --vp-c-bg: #101a14;
+  --vp-c-bg-alt: #0c1510;
+  --vp-c-bg-soft: #17251c;
+  --vp-c-bg-elv: #1c2c22;
+  --vp-c-gutter: #233327;
 
-  --vp-c-divider: #2a2245;
-  --vp-c-border: #342a52;
+  --vp-c-divider: #233327;
+  --vp-c-border: #2c4030;
 
-  --card-surface: #1e1832;
-  --card-border: #342a52;
+  --card-surface: #17251c;
+  --card-border: #2c4030;
 }
 
-/* ---------- 整页底色 ---------- */
+/* ---------- 整页底色：水彩草地照片 + 可读性蒙层 ---------- */
 
 /*
- * 注意：必须在 body 上给「底色」，而不是只叠透明光斑——
- * 页面最外层的绘图表面是 html/body，body 背景透明时浏览器会画纯白。
+ * 两层结构：
+ *   1. 最上面一层是白色/奶油色半透明渐变（蒙层）——没有它文字读不清
+ *   2. 下面才是那张草地照片（field.jpg）
+ * 蒙层透明度按内容区分：
+ *   - 首页：薄一点（0.34~0.72），让草地和天空透出来
+ *   - 文章/列表页：厚一点（0.8~0.94），保证长文阅读不累
  */
 body {
   background-color: var(--vp-c-bg);
   background-image:
-    radial-gradient(1100px 620px at 12% -10%, rgba(96, 165, 250, 0.34), transparent 62%),
-    radial-gradient(980px 560px at 100% 2%, rgba(236, 72, 153, 0.24), transparent 64%),
-    radial-gradient(820px 520px at 50% 108%, rgba(168, 85, 247, 0.28), transparent 66%),
-    linear-gradient(180deg, #f0eefe 0%, #f5f2fd 45%, #fceef8 100%);
-  background-attachment: fixed;
+    linear-gradient(
+      180deg,
+      rgba(255, 255, 255, 0.34) 0%,
+      rgba(250, 253, 250, 0.62) 42%,
+      rgba(247, 251, 248, 0.72) 100%
+    ),
+    url('/field.jpg');
+  background-size: cover, cover;
+  background-position: center top, center top;
+  background-repeat: no-repeat, no-repeat;
+  background-attachment: fixed, fixed;
 }
 
-.dark body {
-  background-color: var(--vp-c-bg);
+/* 文章页 / 列表页：蒙层加厚，正文区域保持干净 */
+body:not(:has(.VPHome)) {
   background-image:
-    radial-gradient(1100px 620px at 12% -10%, rgba(96, 165, 250, 0.26), transparent 62%),
-    radial-gradient(980px 560px at 100% 2%, rgba(236, 72, 153, 0.18), transparent 64%),
-    radial-gradient(820px 520px at 50% 108%, rgba(168, 85, 247, 0.3), transparent 66%);
-  background-attachment: fixed;
+    linear-gradient(
+      180deg,
+      rgba(255, 255, 255, 0.82) 0%,
+      rgba(249, 252, 250, 0.9) 40%,
+      rgba(247, 251, 248, 0.94) 100%
+    ),
+    url('/field.jpg');
+}
+
+.dark body,
+.dark body:not(:has(.VPHome)) {
+  background-image: none;
+  background-color: var(--vp-c-bg);
 }
 
 /* ---------- 顶栏：柔和渐变底 + 渐变细线 ---------- */
@@ -141,7 +160,7 @@ body {
   bottom: 0;
   height: 2px;
   /* 纯色细线，不再用渐变 */
-  background: var(--c-line, #8b5cf6);
+  background: var(--c-line, #6fae6f);
   opacity: 0.85;
 }
 
@@ -187,14 +206,14 @@ body {
   width: 100%;
   max-width: 420px;
   height: auto;
-  filter: drop-shadow(0 18px 40px rgba(168, 85, 247, 0.28));
+  filter: drop-shadow(0 18px 40px rgba(116, 198, 157, 0.28));
 }
 
 /* Hero 按钮：主按钮带渐变 */
 .VPHero .actions .VPButton.brand {
   background-image: var(--grad-brand);
   border: none;
-  box-shadow: 0 10px 24px -12px rgba(168, 85, 247, 0.72);
+  box-shadow: 0 10px 24px -12px rgba(116, 198, 157, 0.6);
 }
 
 .VPHero .actions .VPButton.brand:hover {
@@ -202,25 +221,63 @@ body {
   transform: translateY(-1px);
 }
 
-/* ---------- 首页：整块加一层柔和的渐变底，避免大屏一片死白 ---------- */
+/* ---------- 首页 Hero：整条全宽的草地 banner ---------- */
 
-.VPHome {
+/*
+ * 用 .VPHero 自身的背景放图，再加一层渐白蒙层让底部融进页面底色。
+ * 关键点：用负外边距把 hero 撑到全宽（内容容器是定宽居中的）。
+ */
+.VPHero {
   position: relative;
-  background-image: linear-gradient(
-    180deg,
-    rgba(96, 165, 250, 0.2) 0%,
-    rgba(236, 72, 153, 0.12) 42%,
-    transparent 78%
-  );
+  background-image:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.42) 0%, rgba(255, 255, 255, 0.08) 34%, rgba(249, 252, 249, 0.92) 88%, var(--vp-c-bg) 100%),
+    url('/field.jpg');
+  background-size: cover, cover;
+  background-position: center top, center 28%;
+  background-repeat: no-repeat, no-repeat;
+  border-radius: 0;
 }
 
-.dark .VPHome {
-  background-image: linear-gradient(
-    180deg,
-    rgba(96, 165, 250, 0.14) 0%,
-    rgba(236, 72, 153, 0.08) 42%,
-    transparent 78%
-  );
+/* 撑满浏览器宽度 */
+@media (min-width: 960px) {
+  .VPHero {
+    margin-left: calc(50% - 50vw);
+    margin-right: calc(50% - 50vw);
+    padding-left: calc(50vw - 50%);
+    padding-right: calc(50vw - 50%);
+  }
+}
+
+/* Hero 里的标题文字加一层柔和白光，压在照片上也看得清 */
+.VPHero .name,
+.VPHero .text,
+.VPHero .tagline {
+  text-shadow: 0 2px 12px rgba(255, 255, 255, 0.85), 0 1px 2px rgba(255, 255, 255, 0.9);
+}
+
+.VPHero .tagline {
+  color: #2f4a30;
+}
+
+.dark .VPHero {
+  background-image:
+    linear-gradient(180deg, rgba(12, 22, 16, 0.72) 0%, rgba(12, 22, 16, 0.86) 60%, var(--vp-c-bg) 100%),
+    url('/field.jpg');
+}
+
+.dark .VPHero .name,
+.dark .VPHero .text,
+.dark .VPHero .tagline {
+  text-shadow: 0 2px 12px rgba(0, 0, 0, 0.6);
+}
+
+.dark .VPHero .tagline {
+  color: #d7e6d9;
+}
+
+/* Hero 区去掉主题自带的那层光晕，避免和照片打架 */
+.VPHero .image-bg {
+  opacity: 0.2;
 }
 
 /* ---------- 首页功能卡片 ---------- */
@@ -240,7 +297,7 @@ body {
   inset: 0 0 auto 0;
   height: 5px;
   border-radius: 20px 20px 0 0;
-  background: var(--c-line, #8b5cf6);
+  background: var(--c-line, #6fae6f);
 }
 
 /* 三张卡片顶边分别用蓝 / 紫 / 粉的纯色 */
@@ -272,7 +329,7 @@ body {
   font-size: 24px;
   border-radius: 14px;
   background: var(--grad-brand-soft);
-  box-shadow: inset 0 0 0 1px rgba(168, 85, 247, 0.24);
+  box-shadow: inset 0 0 0 1px rgba(116, 198, 157, 0.24);
 }
 
 /* ---------- 正文 ---------- */
@@ -299,7 +356,7 @@ body {
   height: 0.82em;
   margin-right: 10px;
   border-radius: 3px;
-  background: var(--c-line, #8b5cf6);
+  background: var(--c-line, #6fae6f);
   vertical-align: -0.06em;
 }
 
@@ -339,7 +396,7 @@ body {
   bottom: 0;
   width: 4px;
   border-radius: 4px;
-  background: var(--c-line, #8b5cf6);
+  background: var(--c-line, #6fae6f);
 }
 
 /* 表格：表头带渐变 */
@@ -401,7 +458,7 @@ body {
   right: 0;
   top: 0;
   height: 2px;
-  background: var(--c-line, #8b5cf6);
+  background: var(--c-line, #6fae6f);
   opacity: 0.55;
 }
 
@@ -412,7 +469,7 @@ body {
 }
 
 .dark .VPFeatures .VPFeature {
-  background-image: linear-gradient(135deg, rgba(168, 85, 247, 0.14), rgba(244, 114, 182, 0.12));
+  background-image: linear-gradient(135deg, rgba(124, 196, 232, 0.14), rgba(143, 214, 148, 0.12));
 }
 
 .dark .vp-doc div[class*='language-'] {

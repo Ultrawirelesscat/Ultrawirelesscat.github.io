@@ -29,7 +29,7 @@ export default defineConfig({
 
   head: [
     ['link', { rel: 'icon', href: `${base}favicon.svg` }],
-    ['meta', { name: 'theme-color', content: '#38bdf8' }]  ],
+    ['meta', { name: 'theme-color', content: '#7cc4e8' }]  ],
 
   markdown: {
     lineNumbers: true,

@@ -61,7 +61,7 @@ const count = computed(() => props.posts.length)
   height: 0.82em;
   margin-right: 10px;
   border-radius: 3px;
-  background: var(--c-line, #8b5cf6);
+  background: var(--c-line, #6fae6f);
   vertical-align: -0.06em;
 }
 
@@ -78,14 +78,14 @@ const count = computed(() => props.posts.length)
   padding: 8px 12px;
   border-radius: 12px;
   background: var(--card-surface, transparent);
-  box-shadow: 0 1px 2px rgba(139, 92, 246, 0.08);
+  box-shadow: 0 1px 2px rgba(96, 150, 96, 0.08);
   transition: background-color 0.2s, transform 0.2s, box-shadow 0.2s;
 }
 
 .archive__year li:hover {
-  background: var(--grad-brand-soft, rgba(168, 85, 247, 0.12));
+  background: var(--grad-brand-soft, rgba(116, 198, 157, 0.14));
   transform: translateX(3px);
-  box-shadow: var(--card-shadow, 0 8px 20px -12px rgba(139, 92, 246, 0.32));
+  box-shadow: var(--card-shadow, 0 8px 20px -12px rgba(96, 150, 96, 0.3));
 }
 
 .archive__year time {
@@ -107,7 +107,7 @@ const count = computed(() => props.posts.length)
   height: 6px;
   margin-right: 10px;
   border-radius: 50%;
-  background: var(--c-line, #8b5cf6);
+  background: var(--c-line, #6fae6f);
   vertical-align: 0.15em;
 }
 

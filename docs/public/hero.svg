@@ -1,26 +1,30 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 380" width="480" height="380" role="img" aria-label="抽象插图：代码与笔记">
   <defs>
     <linearGradient id="gBg" x1="0" y1="0" x2="1" y2="1">
-      <stop offset="0" stop-color="#e6e9ff" />
-      <stop offset="0.5" stop-color="#f6e6ff" />
-      <stop offset="1" stop-color="#ffe4f3" />
+      <stop offset="0" stop-color="#e4f1fb" />
+      <stop offset="0.5" stop-color="#eaf7ea" />
+      <stop offset="1" stop-color="#fdf6e3" />
     </linearGradient>
-    <linearGradient id="gBlue" x1="0" y1="0" x2="1" y2="1">
-      <stop offset="0" stop-color="#60a5fa" />
-      <stop offset="1" stop-color="#3b82f6" />
+    <linearGradient id="gSky" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#9ed8f5" />
+      <stop offset="1" stop-color="#4aa3dd" />
     </linearGradient>
-    <linearGradient id="gViolet" x1="0" y1="0" x2="1" y2="1">
-      <stop offset="0" stop-color="#c084fc" />
-      <stop offset="1" stop-color="#8b5cf6" />
+    <linearGradient id="gLeaf" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#a3dba3" />
+      <stop offset="1" stop-color="#7fc97f" />
     </linearGradient>
-    <linearGradient id="gPink" x1="0" y1="0" x2="1" y2="1">
-      <stop offset="0" stop-color="#f472b6" />
-      <stop offset="1" stop-color="#ec4899" />
+    <linearGradient id="gGrass" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#8fce8f" />
+      <stop offset="1" stop-color="#5fa85f" />
+    </linearGradient>
+    <linearGradient id="gCream" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#f7e3a8" />
+      <stop offset="1" stop-color="#f0c987" />
     </linearGradient>
     <linearGradient id="gBlend" x1="0" y1="0" x2="1" y2="0">
-      <stop offset="0" stop-color="#60a5fa" />
-      <stop offset="0.5" stop-color="#a855f7" />
-      <stop offset="1" stop-color="#f472b6" />
+      <stop offset="0" stop-color="#9ed8f5" />
+      <stop offset="0.5" stop-color="#8fd694" />
+      <stop offset="1" stop-color="#cfe3a0" />
     </linearGradient>
     <filter id="fSoft" x="-30%" y="-30%" width="160%" height="160%">
       <feGaussianBlur stdDeviation="12" />
@@ -29,47 +33,47 @@
 
   <!-- 背景 -->
   <rect width="480" height="380" rx="28" fill="url(#gBg)" />
-  <circle cx="96" cy="84" r="58" fill="url(#gBlue)" opacity="0.26" filter="url(#fSoft)" />
-  <circle cx="392" cy="300" r="66" fill="url(#gPink)" opacity="0.3" filter="url(#fSoft)" />
-  <circle cx="70" cy="330" r="34" fill="url(#gViolet)" opacity="0.28" filter="url(#fSoft)" />
+  <circle cx="96" cy="84" r="58" fill="url(#gSky)" opacity="0.28" filter="url(#fSoft)" />
+  <circle cx="392" cy="300" r="66" fill="url(#gLeaf)" opacity="0.32" filter="url(#fSoft)" />
+  <circle cx="70" cy="330" r="34" fill="url(#gCream)" opacity="0.34" filter="url(#fSoft)" />
 
   <!-- 主卡片：代码窗口 -->
   <g transform="rotate(-4 240 190)">
     <rect x="88" y="96" width="300" height="196" rx="20" fill="#ffffff" opacity="0.96" />
-    <rect x="88" y="96" width="300" height="196" rx="20" fill="none" stroke="#ddd6fe" stroke-width="2" />
-    <circle cx="116" cy="124" r="6" fill="#60a5fa" />
-    <circle cx="138" cy="124" r="6" fill="#a855f7" />
-    <circle cx="160" cy="124" r="6" fill="#ec4899" />
-    <rect x="88" y="142" width="300" height="2" fill="#eef0f8" />
+    <rect x="88" y="96" width="300" height="196" rx="20" fill="none" stroke="#cfe4d5" stroke-width="2" />
+    <circle cx="116" cy="124" r="6" fill="#9ed8f5" />
+    <circle cx="138" cy="124" r="6" fill="#7fc97f" />
+    <circle cx="160" cy="124" r="6" fill="#f0c987" />
+    <rect x="88" y="142" width="300" height="2" fill="#eef4ef" />
 
     <!-- 代码括号 -->
     <path d="M150 176 q-16 0 -16 18 q0 18 -16 18 q16 0 16 18 q0 18 16 18"
-          fill="none" stroke="url(#gBlue)" stroke-width="7" stroke-linecap="round" />
+          fill="none" stroke="url(#gSky)" stroke-width="7" stroke-linecap="round" />
     <path d="M326 176 q16 0 16 18 q0 18 16 18 q-16 0 -16 18 q0 18 -16 18"
-          fill="none" stroke="url(#gViolet)" stroke-width="7" stroke-linecap="round" />
-    <path d="M268 168 l-44 88" fill="none" stroke="url(#gPink)" stroke-width="7" stroke-linecap="round" />
+          fill="none" stroke="url(#gLeaf)" stroke-width="7" stroke-linecap="round" />
+    <path d="M268 168 l-44 88" fill="none" stroke="url(#gGrass)" stroke-width="7" stroke-linecap="round" />
 
     <!-- 代码行 -->
-    <rect x="186" y="182" width="62" height="9" rx="4.5" fill="#93b4fb" />
-    <rect x="186" y="204" width="40" height="9" rx="4.5" fill="#c4b5fd" />
-    <rect x="186" y="226" width="54" height="9" rx="4.5" fill="#f9a8d4" />
+    <rect x="186" y="182" width="62" height="9" rx="4.5" fill="#9ec9e8" />
+    <rect x="186" y="204" width="40" height="9" rx="4.5" fill="#a9d9a9" />
+    <rect x="186" y="226" width="54" height="9" rx="4.5" fill="#e3ce93" />
   </g>
 
   <!-- 笔记卡片 -->
   <g transform="rotate(7 356 272)">
     <rect x="268" y="196" width="168" height="146" rx="16" fill="#ffffff" opacity="0.97" />
-    <rect x="268" y="196" width="168" height="146" rx="16" fill="none" stroke="#fbcfe8" stroke-width="2" />
+    <rect x="268" y="196" width="168" height="146" rx="16" fill="none" stroke="#d7e9d7" stroke-width="2" />
     <rect x="268" y="196" width="168" height="8" rx="4" fill="url(#gBlend)" />
-    <rect x="292" y="232" width="112" height="9" rx="4.5" fill="#8b5cf6" opacity="0.75" />
-    <rect x="292" y="256" width="88" height="9" rx="4.5" fill="#a855f7" opacity="0.5" />
-    <rect x="292" y="280" width="100" height="9" rx="4.5" fill="#ec4899" opacity="0.4" />
-    <circle cx="300" cy="314" r="7" fill="url(#gPink)" />
-    <rect x="318" y="310" width="60" height="8" rx="4" fill="#f9a8d4" opacity="0.8" />
+    <rect x="292" y="232" width="112" height="9" rx="4.5" fill="#5fa85f" opacity="0.75" />
+    <rect x="292" y="256" width="88" height="9" rx="4.5" fill="#7fc97f" opacity="0.55" />
+    <rect x="292" y="280" width="100" height="9" rx="4.5" fill="#4aa3dd" opacity="0.45" />
+    <circle cx="300" cy="314" r="7" fill="url(#gCream)" />
+    <rect x="318" y="310" width="60" height="8" rx="4" fill="#f0d9a0" opacity="0.85" />
   </g>
 
   <!-- 星芒与光点 -->
-  <path d="M96 202 l7 18 18 7 -18 7 -7 18 -7 -18 -18 -7 18 -7 z" fill="url(#gViolet)" opacity="0.95" />
-  <circle cx="404" cy="140" r="9" fill="url(#gPink)" opacity="0.95" />
-  <circle cx="432" cy="176" r="5" fill="url(#gBlue)" opacity="0.8" />
-  <circle cx="60" cy="248" r="6" fill="url(#gViolet)" opacity="0.9" />
+  <path d="M96 202 l7 18 18 7 -18 7 -7 18 -7 -18 -18 -7 18 -7 z" fill="url(#gLeaf)" opacity="0.95" />
+  <circle cx="404" cy="140" r="9" fill="url(#gSky)" opacity="0.95" />
+  <circle cx="432" cy="176" r="5" fill="url(#gGrass)" opacity="0.85" />
+  <circle cx="60" cy="248" r="6" fill="url(#gCream)" opacity="0.95" />
 </svg>

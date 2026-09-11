@@ -21,13 +21,17 @@ npm run preview # 本地预览构建产物
 > npm.cmd install --ignore-scripts
 > ```
 
-## 本机已知情况（2025-01 搭建时记录）
+## 环境情况
 
 - **Node 24 / npm 11**：可用
-- **git**：本机未安装。这不影响本地写作和构建，只影响两件事：
-  1. 页面上的「最后更新于」不会显示 —— `config.mts` 会自动探测，没 git 就关掉该功能，装上 git 后自动恢复
-  2. 无法用 `git push` 发布，需要先装 git（见文末）
-- `npm install` 加了 `--ignore-scripts`：本项目没有必须执行的安装脚本，跳过它可以避开部分权限报错
+- **git 2.55.0**：已安装，装在 `C:\Program Files\Git\cmd`
+  - 已写入系统 PATH，**装完后需要重开终端**才能全局生效
+- **代理**：本机 `127.0.0.1:7890` 处有代理在运行。访问 github.com 必须走它，
+  已在本仓库配置（只作用于 github.com，不影响国内源）：
+  ```powershell
+  git config http.https://github.com.proxy http://127.0.0.1:7890
+  ```
+- `npm install` 建议加 `--ignore-scripts`：本项目没有必须执行的安装脚本，跳过它可以避开部分权限报错
 
 
 ## 目录结构
@@ -95,48 +99,45 @@ npm run dev
 
 ## 部署到 GitHub Pages
 
-### 0. 先装 git（本机还没有）
+### 1. 仓库
 
-在 PowerShell 里执行：
+<https://github.com/Ultrawirelesscat/Ultrawirelesscat.github.io>
 
-```powershell
-winget install --id Git.Git -e --source winget
+这是**用户主页仓库**（仓库名 = `用户名.github.io`），所以站点部署在根路径，
+线上地址就是：
+
+```text
+https://ultrawirelesscat.github.io/
 ```
 
-装完**重开一个终端**（让 PATH 生效），用 `git --version` 确认。
-
-### 1. 建仓库并推送
-
-先在 GitHub 上新建一个仓库（例如 `my-blog`，**不要**勾选自动生成 README），然后：
-
-```bash
-cd my-blog
-git init -b main
-git add .
-git commit -m "chore: init blog"
-git remote add origin https://github.com/你的用户名/my-blog.git
-git push -u origin main
-```
-
-### 2. 打开 Pages
+### 2. 打开 Pages（只需做一次）
 
 仓库页面 → **Settings → Pages → Build and deployment → Source** 选择
 **GitHub Actions**。
 
-之后每次 `git push` 到 `main`，`.github/workflows/deploy.yml` 会自动构建并发布。
-发布地址是：
-
-```text
-https://你的用户名.github.io/my-blog/
-```
+之后每次 `git push` 到 `main`，`.github/workflows/deploy.yml` 会自动构建并发布，
+无需任何手动操作。构建进度可以在仓库的 **Actions** 标签页看。
 
 ### 3. 关于 base 路径（重要）
 
-项目型仓库的访问地址带子路径，所以构建时 `base` 必须是 `/my-blog/`。
-workflow 里已经自动取仓库名注入，**本地开发不受影响**（默认 `/`）。
+`base` 决定站点资源的根路径，配错会导致线上样式全丢：
 
-如果你的仓库名是 `你的用户名.github.io`（用户主页），请把 workflow 里
-`BASE_PATH` 那一行删除或改成 `/`。
+| 仓库类型 | base |
+| --- | --- |
+| `用户名.github.io`（用户主页，本项目） | `/` |
+| `用户名/仓库名`（项目型） | `/仓库名/` |
+
+本项目的 `BASE_PATH` 在 workflow 里写死为 `/`；`config.mts` 默认也是 `/`，
+所以本地开发和线上表现一致。换成项目型仓库时改 workflow 里那一行即可。
+
+### 4. 推送流程（日常）
+
+```powershell
+cd D:\agent-test\my-blog
+git add .
+git commit -m "post: 新文章标题"
+git push
+```
 
 ## 换成你自己的信息
 
@@ -145,8 +146,8 @@ workflow 里已经自动取仓库名注入，**本地开发不受影响**（默�
 | 站点标题、描述 | `docs/.vitepress/config.mts` 里的 `title` / `description` |
 | 导航、侧边栏 | `docs/.vitepress/config.mts` 的 `themeConfig.nav` / `sidebar` |
 | 主题色 | `docs/.vitepress/theme/custom.css` 里的 `--vp-c-brand-*`（当前是浅蓝色系） |
-| GitHub 链接 | `docs/.vitepress/config.mts` 的 `socialLinks` |
-| 个人介绍 | `docs/about.md` |
+| GitHub 链接 | `docs/.vitepress/config.mts` 的 `socialLinks`（**当前还是占位符 `your-name`，记得改**） |
+| 个人介绍 | `docs/about.md`（**当前是占位内容，记得改**） |
 | 网站图标 | `docs/public/favicon.svg`、`docs/public/logo.svg` |
 
 ## 配色说明

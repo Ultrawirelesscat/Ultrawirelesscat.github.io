@@ -81,7 +81,7 @@ export default defineConfig({
     },
 
     socialLinks: [
-      { icon: 'github', link: 'https://github.com/your-name' }
+      { icon: 'github', link: 'https://github.com/Ultrawirelesscat' }
     ],
 
     outline: { level: [2, 3], label: '本页目录' },

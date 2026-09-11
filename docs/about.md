@@ -18,11 +18,11 @@ title: 关于
 
 - 基于 [VitePress](https://vitepress.dev/) 构建，Markdown 写作
 - 部署在 GitHub Pages 上，推送到 `main` 分支自动发布
-- 源码仓库：[github.com/your-name/my-blog](https://github.com/your-name/my-blog)
+- 源码仓库：[github.com/Ultrawirelesscat/Ultrawirelesscat.github.io](https://github.com/Ultrawirelesscat/Ultrawirelesscat.github.io)
 
 ## 联系我
 
-- GitHub：[@your-name](https://github.com/your-name)
+- GitHub：[@Ultrawirelesscat](https://github.com/Ultrawirelesscat)
 - 邮箱：you@example.com
 
-> 这个页面请把占位信息换成你自己的。
+> 上面除了 GitHub 链接，其他占位信息请换成你自己的。

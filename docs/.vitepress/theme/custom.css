@@ -167,29 +167,11 @@ body:not(:has(.VPHome)) {
 /* ---------- 首页 Hero ---------- */
 
 /*
- * 关键：gradient-clip 文字必须让 --vp-home-hero-name-color 变成 transparent。
- * 默认主题的 .clip 里有 -webkit-text-fill-color: var(--vp-home-hero-name-color)，
- * 这个变量只要是实色就会把渐变整个盖住。同时主题要求 Hero 名字和正文
- * 都保持白色文字（.text 会被设成 #fff），所以两处都要单独处理。
+ * 注意：这里不需要再动 --vp-home-hero-name-color。
+ * 之前做渐变文字时必须把它设成 transparent（否则默认主题的 -webkit-text-fill-color
+ * 会把渐变盖住）；现在文字压在照片上，改用实色深色，所以要让它保持默认。
+ * 具体的文字颜色在下面「首页 Hero：草地 banner」那一节里定义。
  */
-:root,
-.dark {
-  --vp-home-hero-name-color: transparent;
-  --vp-home-hero-name-background: var(--grad-brand);
-}
-
-.VPHero .name,
-.VPHero .text {
-  background-image: var(--grad-brand);
-  background-clip: text;
-  -webkit-background-clip: text;
-  color: transparent;
-  -webkit-text-fill-color: transparent;
-}
-
-.VPHero .tagline {
-  color: var(--vp-c-text-2);
-}
 
 /* 插图背后的彩色光晕 */
 .VPHero .image-bg {
@@ -224,13 +206,24 @@ body:not(:has(.VPHome)) {
 /* ---------- 首页 Hero：整条全宽的草地 banner ---------- */
 
 /*
- * 用 .VPHero 自身的背景放图，再加一层渐白蒙层让底部融进页面底色。
+ * 可读性优先的做法：
+ *   上半部分用较厚的白蒙层压出一片干净的浅色区，文字落在这片区域上；
+ *   中下部蒙层快速变薄，草地和天空的细节在这里完整露出来；
+ *   最底部再渐白收口，平滑过渡到页面底色。
  * 关键点：用负外边距把 hero 撑到全宽（内容容器是定宽居中的）。
  */
 .VPHero {
   position: relative;
   background-image:
-    linear-gradient(180deg, rgba(255, 255, 255, 0.42) 0%, rgba(255, 255, 255, 0.08) 34%, rgba(249, 252, 249, 0.92) 88%, var(--vp-c-bg) 100%),
+    linear-gradient(
+      180deg,
+      rgba(255, 255, 255, 0.9) 0%,
+      rgba(255, 255, 255, 0.76) 26%,
+      rgba(255, 255, 255, 0.34) 44%,
+      rgba(250, 253, 250, 0.1) 62%,
+      rgba(250, 253, 250, 0.8) 88%,
+      var(--vp-c-bg) 100%
+    ),
     url('/field.jpg');
   background-size: cover, cover;
   background-position: center top, center 28%;
@@ -248,31 +241,50 @@ body:not(:has(.VPHome)) {
   }
 }
 
-/* Hero 里的标题文字加一层柔和白光，压在照片上也看得清 */
-.VPHero .name,
-.VPHero .text,
-.VPHero .tagline {
-  text-shadow: 0 2px 12px rgba(255, 255, 255, 0.85), 0 1px 2px rgba(255, 255, 255, 0.9);
+/*
+ * 压在图片上的文字：全部用实色深色，不再用渐变文字。
+ * 白色光晕在浅色水彩画上只会让边缘发灰，反而更糊。
+ */
+.VPHero .name {
+  background-image: none;
+  -webkit-text-fill-color: currentColor;
+  color: #2f6f8f;
+}
+
+.VPHero .text {
+  background-image: none;
+  -webkit-text-fill-color: currentColor;
+  color: #1f3d2b;
 }
 
 .VPHero .tagline {
-  color: #2f4a30;
+  color: #3d5a44;
 }
 
+/* 深色模式：照片压暗，文字回到浅色 */
 .dark .VPHero {
   background-image:
-    linear-gradient(180deg, rgba(12, 22, 16, 0.72) 0%, rgba(12, 22, 16, 0.86) 60%, var(--vp-c-bg) 100%),
+    linear-gradient(
+      180deg,
+      rgba(10, 20, 14, 0.82) 0%,
+      rgba(10, 20, 14, 0.72) 30%,
+      rgba(10, 20, 14, 0.45) 52%,
+      rgba(10, 20, 14, 0.7) 84%,
+      var(--vp-c-bg) 100%
+    ),
     url('/field.jpg');
 }
 
-.dark .VPHero .name,
-.dark .VPHero .text,
-.dark .VPHero .tagline {
-  text-shadow: 0 2px 12px rgba(0, 0, 0, 0.6);
+.dark .VPHero .name {
+  color: #bfe6fb;
+}
+
+.dark .VPHero .text {
+  color: #dcefdc;
 }
 
 .dark .VPHero .tagline {
-  color: #d7e6d9;
+  color: #c2d8c6;
 }
 
 /* Hero 区去掉主题自带的那层光晕，避免和照片打架 */

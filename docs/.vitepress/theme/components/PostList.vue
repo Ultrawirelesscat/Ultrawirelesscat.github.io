@@ -58,25 +58,25 @@ defineProps({
   transition: border-color 0.25s, transform 0.25s, box-shadow 0.25s;
 }
 
-/* 顶部渐变色条：蓝 → 紫 → 粉 依次轮换，比单一色活泼 */
+/* 顶部色条：纯色，蓝 → 紫 → 粉 依次轮换 */
 .post-card::before {
   content: '';
   position: absolute;
   inset: 0 0 auto 0;
   height: 5px;
-  background: var(--grad-brand, linear-gradient(120deg, #4f8cf7, #ec4899));
+  background: var(--c-line, #8b5cf6);
 }
 
 .post-card:nth-child(3n + 1)::before {
-  background: linear-gradient(90deg, #60a5fa, #3b82f6);
+  background: var(--c-blue, #3b82f6);
 }
 
 .post-card:nth-child(3n + 2)::before {
-  background: linear-gradient(90deg, #a855f7, #8b5cf6);
+  background: var(--c-violet, #8b5cf6);
 }
 
 .post-card:nth-child(3n)::before {
-  background: linear-gradient(90deg, #ec4899, #f472b6);
+  background: var(--c-pink, #ec4899);
 }
 
 .post-card:hover {
@@ -99,7 +99,7 @@ defineProps({
   font-weight: 600;
 }
 
-/* 标题前的渐变小点 */
+/* 标题前的实心小点 */
 .post-card__title a::before {
   content: '';
   display: inline-block;
@@ -107,7 +107,7 @@ defineProps({
   height: 7px;
   margin-right: 10px;
   border-radius: 50%;
-  background: var(--grad-brand, linear-gradient(120deg, #4f8cf7, #ec4899));
+  background: var(--c-line, #8b5cf6);
   vertical-align: 0.18em;
 }
 
@@ -125,22 +125,18 @@ defineProps({
   color: var(--vp-c-text-3);
 }
 
-/* 分类标签：按栏目分色，编程笔记=紫，生活随笔=粉 */
+/* 分类标签：纯色底，编程笔记=紫，生活随笔=粉 */
 .post-card__category {
   padding: 2px 10px;
   border-radius: 999px;
   font-weight: 600;
   font-size: 12px;
   color: #ffffff;
-  background-image: linear-gradient(120deg, #a855f7, #8b5cf6);
+  background: var(--c-violet, #7c3aed);
 }
 
 .post-card[data-category='生活随笔'] .post-card__category {
-  background-image: linear-gradient(120deg, #ec4899, #f472b6);
-}
-
-.post-card__tag {
-  color: var(--vp-c-text-3);
+  background: var(--c-pink, #db2777);
 }
 
 .post-card__tag {

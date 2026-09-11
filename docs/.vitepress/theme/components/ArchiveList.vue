@@ -61,7 +61,7 @@ const count = computed(() => props.posts.length)
   height: 0.82em;
   margin-right: 10px;
   border-radius: 3px;
-  background: var(--grad-brand, linear-gradient(120deg, #4f8cf7, #ec4899));
+  background: var(--c-line, #8b5cf6);
   vertical-align: -0.06em;
 }
 
@@ -107,7 +107,7 @@ const count = computed(() => props.posts.length)
   height: 6px;
   margin-right: 10px;
   border-radius: 50%;
-  background: var(--grad-brand, linear-gradient(120deg, #4f8cf7, #ec4899));
+  background: var(--c-line, #8b5cf6);
   vertical-align: 0.15em;
 }
 

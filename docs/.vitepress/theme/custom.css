@@ -22,6 +22,9 @@
   --c-violet: #8b5cf6;
   --c-pink: #ec4899;
 
+  /* 所有「横线」类装饰统一用这个纯色（导航栏、页脚、标题、卡片顶边） */
+  --c-line: #8b5cf6;
+
   --grad-brand: linear-gradient(120deg, #4f8cf7 0%, #a855f7 52%, #ec4899 100%);
   --grad-brand-soft: linear-gradient(135deg, rgba(79, 140, 247, 0.16), rgba(236, 72, 153, 0.16));
 
@@ -70,6 +73,9 @@
   --c-blue: #60a5fa;
   --c-violet: #a78bfa;
   --c-pink: #f472b6;
+
+  /* 深色模式下线条用亮紫，保证在暗底上看得清 */
+  --c-line: #a78bfa;
 
   --grad-brand: linear-gradient(120deg, #93c5fd 0%, #c084fc 52%, #f472b6 100%);
   --grad-brand-soft: linear-gradient(135deg, rgba(168, 85, 247, 0.2), rgba(244, 114, 182, 0.2));
@@ -134,8 +140,9 @@ body {
   right: 0;
   bottom: 0;
   height: 2px;
-  background: var(--grad-brand);
-  opacity: 0.6;
+  /* 纯色细线，不再用渐变 */
+  background: var(--c-line, #8b5cf6);
+  opacity: 0.85;
 }
 
 /* ---------- 首页 Hero ---------- */
@@ -233,21 +240,20 @@ body {
   inset: 0 0 auto 0;
   height: 5px;
   border-radius: 20px 20px 0 0;
-  background: var(--grad-brand);
-  opacity: 0.9;
+  background: var(--c-line, #8b5cf6);
 }
 
-/* 三张卡片顶边分别用蓝 / 紫 / 粉，年轻感的关键 */
+/* 三张卡片顶边分别用蓝 / 紫 / 粉的纯色 */
 .VPFeatures .VPFeature:nth-child(1)::before {
-  background: linear-gradient(90deg, #60a5fa, #3b82f6);
+  background: var(--c-blue);
 }
 
 .VPFeatures .VPFeature:nth-child(2)::before {
-  background: linear-gradient(90deg, #a855f7, #8b5cf6);
+  background: var(--c-violet);
 }
 
 .VPFeatures .VPFeature:nth-child(3)::before {
-  background: linear-gradient(90deg, #ec4899, #f472b6);
+  background: var(--c-pink);
 }
 
 .VPFeatures .VPFeature:hover {
@@ -293,7 +299,7 @@ body {
   height: 0.82em;
   margin-right: 10px;
   border-radius: 3px;
-  background: linear-gradient(180deg, #3b82f6, #a855f7 55%, #ec4899);
+  background: var(--c-line, #8b5cf6);
   vertical-align: -0.06em;
 }
 
@@ -333,7 +339,7 @@ body {
   bottom: 0;
   width: 4px;
   border-radius: 4px;
-  background: var(--grad-brand);
+  background: var(--c-line, #8b5cf6);
 }
 
 /* 表格：表头带渐变 */
@@ -395,8 +401,8 @@ body {
   right: 0;
   top: 0;
   height: 2px;
-  background: var(--grad-brand);
-  opacity: 0.4;
+  background: var(--c-line, #8b5cf6);
+  opacity: 0.55;
 }
 
 /* ---------- 深色模式微调 ---------- */

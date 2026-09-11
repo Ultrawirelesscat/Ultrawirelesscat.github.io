@@ -18,8 +18,8 @@ const base = process.env.BASE_PATH || '/'
 export default defineConfig({
   base,
   lang: 'zh-CN',
-  title: '我的博客',
-  description: '编程笔记与生活随笔',
+  title: 'Ultrawirelesscat的小站',
+  description: '一名学生的编程笔记与生活随笔',
 
   // 文章放在 docs/blog 下，用干净的链接
   cleanUrls: true,
@@ -39,7 +39,7 @@ export default defineConfig({
 
   themeConfig: {
     logo: '/logo.svg',
-    siteTitle: '我的博客',
+    siteTitle: 'Ultrawirelesscat的小站',
 
     nav: [
       { text: '首页', link: '/' },

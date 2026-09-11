@@ -2,7 +2,7 @@
 layout: home
 
 hero:
-  name: 我的博客
+  name: Ultrawirelesscat的小站
   text: 编程笔记与生活随笔
   tagline: 把学到的东西写下来，才真正属于自己
   actions:

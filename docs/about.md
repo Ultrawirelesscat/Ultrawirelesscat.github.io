@@ -4,15 +4,15 @@ title: 关于
 
 # 关于我
 
-你好，我是 **你的名字** 👋
+你好，我是 **Ultrawirelesscat** 👋
 
-这里是我的个人博客，用来记录编程学习和生活日常。
+一名学生，这里是我的个人小站，用来记录编程学习和学生时代的日常。
 
 ## 我在做什么
 
-- 主业：前端 / 全栈开发（按你的情况改）
-- 正在学：TypeScript、Vue 生态、Node 服务端
-- 业余爱好：读书、跑步、摄影
+- 身份：学生
+- 正在学：前端开发、JavaScript / TypeScript、Vue 生态
+- 业余爱好：读书、折腾各种工具、偶尔写点东西
 
 ## 关于这个站
 
@@ -23,6 +23,5 @@ title: 关于
 ## 联系我
 
 - GitHub：[@Ultrawirelesscat](https://github.com/Ultrawirelesscat)
-- 邮箱：you@example.com
 
-> 上面除了 GitHub 链接，其他占位信息请换成你自己的。
+有想聊的，欢迎到 GitHub 找我。

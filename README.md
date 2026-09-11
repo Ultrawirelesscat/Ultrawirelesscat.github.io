@@ -141,13 +141,16 @@ git push
 
 ## 换成你自己的信息
 
+站点当前信息：**Ultrawirelesscat的小站**（作者：Ultrawirelesscat，学生）
+
 | 要改的东西 | 位置 |
 | --- | --- |
-| 站点标题、描述 | `docs/.vitepress/config.mts` 里的 `title` / `description` |
+| 站点标题、描述 | `docs/.vitepress/config.mts` 里的 `title` / `description`（`themeConfig.siteTitle` 要同步改） |
+| 首页大标题 | `docs/index.md` 的 `hero.name` |
 | 导航、侧边栏 | `docs/.vitepress/config.mts` 的 `themeConfig.nav` / `sidebar` |
 | 主题色 | `docs/.vitepress/theme/custom.css` 里的 `--vp-c-brand-*`（当前是浅蓝色系） |
-| GitHub 链接 | `docs/.vitepress/config.mts` 的 `socialLinks`（**当前还是占位符 `your-name`，记得改**） |
-| 个人介绍 | `docs/about.md`（**当前是占位内容，记得改**） |
+| GitHub 链接 | `docs/.vitepress/config.mts` 的 `socialLinks` |
+| 个人介绍 | `docs/about.md` |
 | 网站图标 | `docs/public/favicon.svg`、`docs/public/logo.svg` |
 
 ## 配色说明

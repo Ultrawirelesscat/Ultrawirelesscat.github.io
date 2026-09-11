@@ -242,23 +242,29 @@ body:not(:has(.VPHome)) {
 }
 
 /*
- * 压在图片上的文字：全部用实色深色，不再用渐变文字。
+ * 压在图片上的文字：全部用实色深色调，不再用渐变文字。
  * 白色光晕在浅色水彩画上只会让边缘发灰，反而更糊。
+ *
+ * 层次靠「字重 + 字距 + 明度」区分，不靠换色 ——
+ * 站名最重最实，副标题稍轻，tagline 再淡一档。
  */
 .VPHero .name {
   background-image: none;
   -webkit-text-fill-color: currentColor;
-  color: #2f6f8f;
+  color: #1f3d2b;
+  font-weight: 800;
+  letter-spacing: 0.01em;
 }
 
 .VPHero .text {
   background-image: none;
   -webkit-text-fill-color: currentColor;
-  color: #1f3d2b;
+  color: #2e5138;
+  font-weight: 600;
 }
 
 .VPHero .tagline {
-  color: #3d5a44;
+  color: #4a6b51;
 }
 
 /* 深色模式：照片压暗，文字回到浅色 */
@@ -276,7 +282,7 @@ body:not(:has(.VPHome)) {
 }
 
 .dark .VPHero .name {
-  color: #bfe6fb;
+  color: #eaf7ec;
 }
 
 .dark .VPHero .text {

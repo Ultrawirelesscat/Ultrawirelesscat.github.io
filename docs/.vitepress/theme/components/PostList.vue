@@ -12,7 +12,12 @@ defineProps({
   <div class="post-list">
     <p v-if="!posts.length" class="post-list__empty">还没有文章，去 docs/blog 下写一篇吧。</p>
 
-    <article v-for="post in posts" :key="post.url" class="post-card">
+    <article
+      v-for="post in posts"
+      :key="post.url"
+      class="post-card"
+      :data-category="post.category"
+    >
       <h3 class="post-card__title">
         <a :href="withBase(post.url)">{{ post.title }}</a>
       </h3>
@@ -44,28 +49,40 @@ defineProps({
 .post-card {
   position: relative;
   overflow: hidden;
-  border: 1px solid var(--vp-c-divider);
+  border: 1px solid var(--card-border, var(--vp-c-divider));
   border-radius: 14px;
   padding: 20px 22px;
-  background: var(--vp-c-bg-soft);
-  background-image: var(--grad-brand-soft, linear-gradient(135deg, rgba(56, 189, 248, 0.12), rgba(45, 212, 191, 0.12)));
-  box-shadow: var(--card-shadow, 0 8px 24px -12px rgba(2, 132, 199, 0.28));
+  /* 蓝底页面上的白色卡片，靠明度差形成层次 */
+  background: var(--card-surface, var(--vp-c-bg-soft));
+  box-shadow: var(--card-shadow, 0 8px 24px -12px rgba(139, 92, 246, 0.3));
   transition: border-color 0.25s, transform 0.25s, box-shadow 0.25s;
 }
 
-/* 顶部渐变色条 */
+/* 顶部渐变色条：蓝 → 紫 → 粉 依次轮换，比单一色活泼 */
 .post-card::before {
   content: '';
   position: absolute;
   inset: 0 0 auto 0;
-  height: 4px;
-  background: var(--grad-brand, linear-gradient(120deg, #38bdf8, #2dd4bf));
+  height: 5px;
+  background: var(--grad-brand, linear-gradient(120deg, #4f8cf7, #ec4899));
+}
+
+.post-card:nth-child(3n + 1)::before {
+  background: linear-gradient(90deg, #60a5fa, #3b82f6);
+}
+
+.post-card:nth-child(3n + 2)::before {
+  background: linear-gradient(90deg, #a855f7, #8b5cf6);
+}
+
+.post-card:nth-child(3n)::before {
+  background: linear-gradient(90deg, #ec4899, #f472b6);
 }
 
 .post-card:hover {
   border-color: var(--vp-c-brand-1);
-  transform: translateY(-3px);
-  box-shadow: var(--card-shadow-hover, 0 18px 40px -18px rgba(2, 132, 199, 0.42));
+  transform: translateY(-4px);
+  box-shadow: var(--card-shadow-hover, 0 18px 40px -18px rgba(139, 92, 246, 0.45));
 }
 
 .post-card__title {
@@ -90,7 +107,7 @@ defineProps({
   height: 7px;
   margin-right: 10px;
   border-radius: 50%;
-  background: var(--grad-brand, linear-gradient(120deg, #38bdf8, #2dd4bf));
+  background: var(--grad-brand, linear-gradient(120deg, #4f8cf7, #ec4899));
   vertical-align: 0.18em;
 }
 
@@ -108,12 +125,22 @@ defineProps({
   color: var(--vp-c-text-3);
 }
 
+/* 分类标签：按栏目分色，编程笔记=紫，生活随笔=粉 */
 .post-card__category {
-  padding: 1px 9px;
+  padding: 2px 10px;
   border-radius: 999px;
-  background: var(--vp-c-brand-soft);
-  color: var(--vp-c-brand-1);
-  font-weight: 500;
+  font-weight: 600;
+  font-size: 12px;
+  color: #ffffff;
+  background-image: linear-gradient(120deg, #a855f7, #8b5cf6);
+}
+
+.post-card[data-category='生活随笔'] .post-card__category {
+  background-image: linear-gradient(120deg, #ec4899, #f472b6);
+}
+
+.post-card__tag {
+  color: var(--vp-c-text-3);
 }
 
 .post-card__tag {

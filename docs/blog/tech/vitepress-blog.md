@@ -1,6 +1,6 @@
 ---
 title: 用 VitePress 搭建个人博客
-date: 2025-01-20
+date: false
 category: 编程笔记
 tags: [VitePress, 博客, 建站]
 description: 从零搭建一个能写中文、能搜索、能自动部署到 GitHub Pages 的静态博客。

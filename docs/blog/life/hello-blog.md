@@ -1,6 +1,6 @@
 ---
 title: 开始写博客这件事
-date: 2025-01-05
+date: false
 category: 生活随笔
 tags: [随笔, 记录]
 description: 关于为什么要有一个自己的小站，以及打算写点什么。

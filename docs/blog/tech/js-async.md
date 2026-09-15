@@ -1,6 +1,6 @@
 ---
 title: JavaScript 异步编程笔记：从回调到 async/await
-date: 2025-01-12
+date: false
 category: 编程笔记
 tags: [JavaScript, 异步, Promise]
 description: 把 Promise、async/await 和常见并发控制在脑子里理成一条线。

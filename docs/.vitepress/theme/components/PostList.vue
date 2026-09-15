@@ -4,13 +4,18 @@ import { withBase } from 'vitepress'
 defineProps({
   posts: { type: Array, default: () => [] },
   /** 是否显示分类标签 */
-  showCategory: { type: Boolean, default: true }
+  showCategory: { type: Boolean, default: true },
+  /**
+   * 没有文章时的提示。这是给访客看的，不要写「去 docs/blog 写一篇」这种
+   * 面向作者的话。
+   */
+  emptyText: { type: String, default: '这里还空着，文章正在路上。' }
 })
 </script>
 
 <template>
   <div class="post-list">
-    <p v-if="!posts.length" class="post-list__empty">还没有文章，去 docs/blog 下写一篇吧。</p>
+    <p v-if="!posts.length" class="post-list__empty">{{ emptyText }}</p>
 
     <article
       v-for="post in posts"

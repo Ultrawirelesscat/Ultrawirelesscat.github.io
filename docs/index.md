@@ -35,8 +35,13 @@ features:
 import { data as posts } from './.vitepress/posts.data.mjs'
 </script>
 
+<!-- 一篇文章都没有时，整块「最近更新」不显示，避免访客看到空标题 -->
+<template v-if="posts.length">
+
 ## 最近更新
 
 <PostList :posts="posts.slice(0, 5)" />
 
 [查看全部文章 →](/blog/)
+
+</template>

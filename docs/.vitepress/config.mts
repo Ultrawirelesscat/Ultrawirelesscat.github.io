@@ -64,6 +64,7 @@ export default defineConfig({
           text: '生活随笔',
           items: [
             { text: '全部文章', link: '/blog/life/' },
+            { text: '十七岁啦！', link: '/blog/life/17birthday' },
             { text: '开始写博客这件事', link: '/blog/life/hello-blog' }
           ]
         }

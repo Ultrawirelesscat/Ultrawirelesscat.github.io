@@ -54,6 +54,7 @@ export default defineConfig({
           text: '编程笔记',
           items: [
             { text: '全部文章', link: '/blog/tech/' },
+            { text: 'whk', link: '/blog/tech/whk' },
             { text: 'VitePress 搭建个人博客', link: '/blog/tech/vitepress-blog' },
             { text: 'JavaScript 异步编程笔记', link: '/blog/tech/js-async' }
           ]
@@ -64,6 +65,7 @@ export default defineConfig({
           text: '生活随笔',
           items: [
             { text: '全部文章', link: '/blog/life/' },
+            { text: '感动哭了', link: '/blog/life/moved-to-tears' },
             { text: '十七岁啦！', link: '/blog/life/17birthday' },
             { text: '开始写博客这件事', link: '/blog/life/hello-blog' }
           ]

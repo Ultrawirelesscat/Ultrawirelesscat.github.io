@@ -23,6 +23,12 @@ export default defineConfig({
 
   // 文章放在 docs/blog 下，用干净的链接
   cleanUrls: true,
+  /*
+   * _drafts/ 里的东西完全不参与构建：草稿、模板都放这里。
+   * 效果是「本地能看到文件，但不会被发布、不会被搜索索引、网址 404」。
+   * 想发布时把文件移出 _drafts/ 即可。
+   */
+  srcExclude: ['_drafts/**'],
   // 需要 git 才能显示"最后更新于"；本机没装 git 时自动关闭，避免构建报错
   lastUpdated: hasGit(),
   ignoreDeadLinks: true,

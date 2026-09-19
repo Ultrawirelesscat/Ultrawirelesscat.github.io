@@ -194,3 +194,28 @@ git push
 **部署后样式全丢 / 404**
 `base` 配错了。项目型仓库必须是 `/仓库名/`，workflow 已自动注入；
 仓库名如果是 `用户名.github.io`，把 workflow 里的 `BASE_PATH` 删掉或改成 `/`。
+
+## 写文章的模板与草稿
+
+模板文件在 `docs/_drafts/_模板.md`，里面每个字段都带注释说明。
+
+**用法**：
+
+1. 复制 `docs/_drafts/_模板.md` 到 `docs/blog/life/` 或 `docs/blog/tech/`
+2. 文件名改成英文小写，例如 `my-first-post.md`
+3. 改 `title` / `date` / `category` / `tags` / `description`，然后写正文
+4. 保存后在浏览器刷新即可看到
+
+**关于 `_drafts/`**：`config.mts` 里配了 `srcExclude: ['_drafts/**']`，
+这个文件夹里的内容**完全不参与构建** —— 本地能看到文件，但不会被发布、
+不会被站内搜索索引、网址也是 404。所以草稿和模板都可以放心提交到仓库备份。
+
+想把草稿发布出去，把文件从 `_drafts/` 移动到 `docs/blog/life/`（或 `tech/`）即可。
+
+**写文章常踩的三个坑**：
+
+| 现象 | 原因 | 解决 |
+| --- | --- | --- |
+| 文章不在任何列表里，只有直接输网址才能打开 | 漏写 `date` | frontmatter 里补上 `date: 2026-09-19` |
+| 首页/列表没更新 | `.vitepress/cache` 缓存，或 dev 与 build 抢缓存 | 删掉 `docs/.vitepress/cache` 再刷新；构建前先关掉 dev |
+| 文章列表里看不到，但站内搜索能搜到 | 用了 `date: false`，它只隐藏列表、不隐藏搜索 | 真要下架就直接删文件，或用 `srcExclude` 排除 |

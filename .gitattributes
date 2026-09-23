@@ -26,3 +26,25 @@
 *.ico   binary
 *.woff  binary
 *.woff2 binary
+
+# PDF 与常见附件必须声明为 binary。
+# 没有这几行时，上面的 * text=auto 会把 PDF 当文本处理（git 会报
+# "LF will be replaced by CRLF"），checkout 时的换行符转换有损坏风险，
+# diff 也会按文本输出乱码。
+*.pdf   binary
+*.zip   binary
+*.7z    binary
+*.rar   binary
+*.gz    binary
+*.mp3   binary
+*.mp4   binary
+*.mov   binary
+*.wav   binary
+*.ttf   binary
+*.otf   binary
+*.doc   binary
+*.docx  binary
+*.xls   binary
+*.xlsx  binary
+*.ppt   binary
+*.pptx  binary

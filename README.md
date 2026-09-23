@@ -219,3 +219,51 @@ git push
 | 文章不在任何列表里，只有直接输网址才能打开 | 漏写 `date` | frontmatter 里补上 `date: 2026-09-19` |
 | 首页/列表没更新 | `.vitepress/cache` 缓存，或 dev 与 build 抢缓存 | 删掉 `docs/.vitepress/cache` 再刷新；构建前先关掉 dev |
 | 文章列表里看不到，但站内搜索能搜到 | 用了 `date: false`，它只隐藏列表、不隐藏搜索 | 真要下架就直接删文件，或用 `srcExclude` 排除 |
+
+## 在文章里嵌入 PDF
+
+适合放题解讲义、试卷、笔记扫描件这类内容。
+
+### 1. 放文件
+
+PDF 放进 `docs/public/pdfs/`（没有就新建），例如：
+
+```text
+docs/public/pdfs/solution-2026.pdf
+```
+
+### 2. 在文章里写一行
+
+新建 `.md` 文章（frontmatter 照常写 `date` / `category`），正文里插入：
+
+```markdown
+<PdfViewer src="/pdfs/solution-2026.pdf" title="2026 集训题解" height="80vh" />
+```
+
+| 属性 | 说明 | 默认值 |
+| --- | --- | --- |
+| `src` | PDF 路径，必须以 `/pdfs/` 开头（会指向 `docs/public/pdfs/`） | 必填 |
+| `title` | 顶部栏显示的标题 | 不填则显示文件名 |
+| `height` | 预览区高度，任意 CSS 长度 | `80vh` |
+| `toolbar` | 是否显示顶部栏（标题/新窗口打开/下载） | `true` |
+
+只有 `src` 是必填的，最简写法：
+
+```markdown
+<PdfViewer src="/pdfs/xxx.pdf" />
+```
+
+### 3. 加进侧边栏（可选）
+
+想让它在侧边栏能点到，在 `docs/.vitepress/config.mts` 对应栏目里加一行：
+
+```ts
+{ text: '2026 集训题解', link: '/blog/tech/solution' }
+```
+
+### 注意事项
+
+- **PDF 是直接下载的静态文件，站内搜索搜不到里面的内容。** 想让内容能被搜到，得把文字写到文章正文里（PDF 只作为附件）
+- **手机浏览器多数不支持内嵌预览**，所以组件底部自带「新窗口打开 / 下载」兜底链接
+- PDF 别太大，GitHub 单文件超过 50MB 会警告、100MB 直接拒绝
+- 同一份 PDF 可以被多篇文章引用，不用重复上传

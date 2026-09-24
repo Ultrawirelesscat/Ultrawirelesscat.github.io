@@ -60,6 +60,7 @@ export default defineConfig({
           text: '编程笔记',
           items: [
             { text: '全部文章', link: '/blog/tech/' },
+            { text: 'PDF 预览演示', link: '/blog/tech/pdf-demo' },
             { text: 'whk', link: '/blog/tech/whk' }
           ]
         }

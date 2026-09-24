@@ -60,6 +60,10 @@ export default defineConfig({
           text: '笔记',
           items: [
             { text: '全部文章', link: '/blog/tech/' },
+            { text: '20260923物理', link: '/blog/tech/20260923物理' },
+            { text: '20260922debug笔记', link: '/blog/tech/20260922debug笔记' },
+            { text: '20260921数学', link: '/blog/tech/20260921数学' },
+            { text: '20260920数学', link: '/blog/tech/20260920数学' },
             { text: 'PDF 预览演示', link: '/blog/tech/pdf-demo' },
             { text: 'whk', link: '/blog/tech/whk' }
           ]

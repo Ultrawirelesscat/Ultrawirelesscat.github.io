@@ -267,3 +267,42 @@ docs/public/pdfs/solution-2026.pdf
 - **手机浏览器多数不支持内嵌预览**，所以组件底部自带「新窗口打开 / 下载」兜底链接
 - PDF 别太大，GitHub 单文件超过 50MB 会警告、100MB 直接拒绝
 - 同一份 PDF 可以被多篇文章引用，不用重复上传
+
+## 分类是自动补全的（不用再手动写 category）
+
+`.github/workflows/auto-category.yml` 会在每次 `push` 到 `main` 后自动检查并修正
+所有文章的 `category`，规则**只按文件所在目录判断**：
+
+| 文件位置 | 自动写入的分类 | 网址前缀 |
+| --- | --- | --- |
+| `docs/blog/life/xxx.md` | `category: 生活随笔` | `/blog/life/xxx` |
+| `docs/blog/tech/xxx.md` | `category: 笔记` | `/blog/tech/xxx` |
+
+所以：
+
+- **发文章只要写 `title` 和 `date` 就够了**，`category` 可以不写，会被自动补上
+- 分类写错了也会被自动改正
+- 分类本来就对的话，流程什么也不做（不会产生多余的提交记录）
+- 修正后如果产生了提交，流程会自动重新触发一次部署，保证内容上线
+
+> **重要前提**：分类和目录必须一致。因为 VitePress 的网址是由目录决定的
+> （`life/` 就是 `/blog/life/`），如果一篇文章想归到「笔记」栏目，
+> **它的文件必须放在 `docs/blog/tech/` 下**，不能放在 `life/` 里靠 `category` 硬指。
+> 放错目录时自动流程会把分类改成和目录一致。
+
+### 本地也能用同一个脚本
+
+不想等 CI，推送前想先修好：
+
+```powershell
+cd D:\agent-test\my-blog
+powershell -NoProfile -ExecutionPolicy Bypass -File scripts\fix-category.ps1
+```
+
+输出会告诉你改了哪些文件、有没有需要人工处理的（比如完全没有 frontmatter 的文件）。
+
+### 为什么脚本文件带 BOM
+
+`scripts/fix-category.ps1` 是 **UTF-8 with BOM** 编码。Windows PowerShell 5.1
+默认按 ANSI 读取 `.ps1`，没有 BOM 的话脚本里的中文会变乱码并导致语法错误。
+用编辑器改这个脚本时，请保持 UTF-8 with BOM。

@@ -1,0 +1,58 @@
+name: 自动补全文章分类
+
+# 每次 push 到 main 时检查文章 frontmatter 里的 category。
+# 你通过网页或邮件发的文章通常只有 title 和 date，
+# 没有 category 就不会出现在栏目页里，这个流程会自动补上。
+#
+# 规则（按文件所在目录判断）：
+#   docs/blog/life/*.md  ->  category: 生活随笔
+#   docs/blog/tech/*.md  ->  category: 笔记
+#
+# 分类正确时不做任何事，所以正常推送不会产生多余提交。
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: write # 需要提交修正后的文件
+  actions: write # 需要重新触发部署流程
+
+jobs:
+  fix-category:
+    runs-on: ubuntu-latest
+    # 防死循环：本流程自己产生的提交带 [skip ci]，这里再挡一道。
+    if: ${{ !contains(github.event.head_commit.message, '[skip ci]') }}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: 补全并修正 category
+        shell: pwsh
+        run: ./scripts/fix-category.ps1
+
+      - name: 有改动就提交并推送
+        id: commit
+        shell: bash
+        run: |
+          if [ -z "$(git status --porcelain)" ]; then
+            echo "分类都正确，无需修改"
+            echo "changed=false" >> "$GITHUB_OUTPUT"
+            exit 0
+          fi
+
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A
+          git commit -m "chore(auto): 自动补全文章分类 [skip ci]"
+          git push
+          echo "changed=true" >> "$GITHUB_OUTPUT"
+
+      # 上面的提交带了 [skip ci]，不会触发部署流程，
+      # 所以这里手动派发一次，保证修正后的内容能上线。
+      - name: 若已修正则重新部署
+        if: steps.commit.outputs.changed == 'true'
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: gh workflow run deploy.yml --ref main

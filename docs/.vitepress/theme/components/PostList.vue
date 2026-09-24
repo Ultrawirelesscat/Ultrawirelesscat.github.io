@@ -73,15 +73,15 @@ defineProps({
 }
 
 .post-card:nth-child(3n + 1)::before {
-  background: var(--c-blue, #4aa3dd);
+  background: var(--c-sky, #4aa3dd);
 }
 
 .post-card:nth-child(3n + 2)::before {
-  background: var(--c-violet, #7fc97f);
+  background: var(--c-leaf, #7fc97f);
 }
 
 .post-card:nth-child(3n)::before {
-  background: var(--c-pink, #f0c987);
+  background: var(--c-cream, #f0c987);
 }
 
 .post-card:hover {
@@ -130,18 +130,18 @@ defineProps({
   color: var(--vp-c-text-3);
 }
 
-/* 分类标签：纯色底，编程笔记=紫，生活随笔=粉 */
+/* 分类标签：纯色底。笔记=叶绿，生活随笔=天空蓝，都取自插画配色 */
 .post-card__category {
   padding: 2px 10px;
   border-radius: 999px;
   font-weight: 600;
   font-size: 12px;
   color: #ffffff;
-  background: var(--c-violet, #5c9e5c);
+  background: var(--c-notes, #4e9d5f);
 }
 
 .post-card[data-category='生活随笔'] .post-card__category {
-  background: var(--c-pink, #d9a441);
+  background: var(--c-life, #3f8fc4);
 }
 
 .post-card__tag {

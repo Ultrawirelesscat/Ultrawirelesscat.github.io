@@ -1,7 +1,7 @@
 ---
 title: PDF 预览演示
 date: 2026-09-18
-category: 编程笔记
+category: 笔记
 tags: [PDF, 演示]
 description: 演示怎么在文章里嵌入 PDF，看效果就点进来。
 ---

@@ -3,7 +3,7 @@ layout: home
 
 hero:
   name: Ultrawirelesscat的小站
-  text: 编程笔记与生活随笔
+  text: 笔记与生活随笔
   tagline: 把学到的东西写下来，才真正属于自己
   actions:
     - theme: brand
@@ -15,7 +15,7 @@ hero:
 
 features:
   - icon: 💻
-    title: 编程笔记
+    title: 笔记
     details: 前端、Node、工具链……踩过的坑和想通的道理，都记在这里。
     link: /blog/tech/
     linkText: 查看笔记

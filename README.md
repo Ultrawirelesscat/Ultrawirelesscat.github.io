@@ -1,6 +1,6 @@
 # 我的博客
 
-基于 [VitePress](https://vitepress.dev/) 的个人博客，包含**编程笔记**与**生活随笔**两个栏目，
+基于 [VitePress](https://vitepress.dev/) 的个人博客，包含**笔记**与**生活随笔**两个栏目，
 支持全文搜索、归档页、暗色模式，并已配置 GitHub Pages 自动部署。
 
 ## 快速开始
@@ -49,7 +49,7 @@ my-blog/
 │  │        ├─ PostList.vue      # 文章卡片列表
 │  │        └─ ArchiveList.vue   # 按年份归档
 │  ├─ blog/
-│  │  ├─ tech/                   # 编程笔记
+│  │  ├─ tech/                   # 笔记
 │  │  └─ life/                   # 生活随笔
 │  ├─ public/                    # 静态资源（logo.svg、favicon.svg、图片）
 │  ├─ index.md                   # 首页
@@ -67,7 +67,7 @@ my-blog/
 ---
 title: 文章标题
 date: 2025-01-20
-category: 编程笔记      # 编程笔记 / 生活随笔
+category: 笔记      # 笔记 / 生活随笔
 tags: [标签一, 标签二]
 description: 一句话摘要，会显示在列表卡片上。
 ---
@@ -161,7 +161,7 @@ git push
 | --- | --- | --- | --- |
 | `--vp-c-brand-1` | 链接、按钮（天空蓝） | `#4aa3dd` | `#9ed8f5` |
 | `--c-line` | 所有横线装饰（导航栏、页脚、标题竖条、卡片顶边） | `#6fae6f` 草绿 | `#8fd694` |
-| `--c-violet` | 分类标签「编程笔记」 | `#7fc97f` | `#8fd694` |
+| `--c-violet` | 分类标签「笔记」 | `#7fc97f` | `#8fd694` |
 | `--c-pink` | 分类标签「生活随笔」 | `#f0c987` 暖奶油 | `#f2d09a` |
 | `--vp-c-bg` | 页面底色（奶油白） | `#f7faf5` | `#101a14` 深墨绿 |
 

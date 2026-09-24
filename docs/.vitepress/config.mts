@@ -19,7 +19,7 @@ export default defineConfig({
   base,
   lang: 'zh-CN',
   title: 'Ultrawirelesscat的小站',
-  description: '一名学生的编程笔记与生活随笔',
+  description: '一名学生的笔记与生活随笔',
 
   // 文章放在 docs/blog 下，用干净的链接
   cleanUrls: true,
@@ -48,7 +48,7 @@ export default defineConfig({
 
     nav: [
       { text: '首页', link: '/' },
-      { text: '编程笔记', link: '/blog/tech/', activeMatch: '/blog/tech/' },
+      { text: '笔记', link: '/blog/tech/', activeMatch: '/blog/tech/' },
       { text: '生活随笔', link: '/blog/life/', activeMatch: '/blog/life/' },
       { text: '归档', link: '/archive' },
       { text: '关于', link: '/about' }
@@ -57,7 +57,7 @@ export default defineConfig({
     sidebar: {
       '/blog/tech/': [
         {
-          text: '编程笔记',
+          text: '笔记',
           items: [
             { text: '全部文章', link: '/blog/tech/' },
             { text: 'PDF 预览演示', link: '/blog/tech/pdf-demo' },
@@ -80,7 +80,7 @@ export default defineConfig({
         {
           text: '全部文章',
           items: [
-            { text: '编程笔记', link: '/blog/tech/' },
+            { text: '笔记', link: '/blog/tech/' },
             { text: '生活随笔', link: '/blog/life/' }
           ]
         }

@@ -17,10 +17,18 @@
   --vp-c-brand-3: #266fa3;
   --vp-c-brand-soft: rgba(74, 163, 221, 0.16);
 
-  /* 装饰用的辅助色：蓝 / 紫 / 粉 */
-  --c-blue: #4aa3dd;
-  --c-violet: #7fc97f;
-  --c-pink: #f0c987;
+  /*
+   * 装饰用的辅助色，都取自 field.jpg 那张插画：
+   * 天空蓝 / 草绿 / 暖奶油。语义化命名，避免像之前那样
+   * 变量名（--c-violet）和实际颜色（绿色）对不上。
+   */
+  --c-sky: #4aa3dd;
+  --c-leaf: #7fc97f;
+  --c-cream: #f0c987;
+
+  /* 分类标签底色：笔记=叶绿，生活随笔=天空蓝（要保证白字可读，故取深一档） */
+  --c-notes: #4e9d5f;
+  --c-life: #3f8fc4;
 
   /* 所有「横线」类装饰统一用这个纯色（导航栏、页脚、标题、卡片顶边） */
   --c-line: #6fae6f;
@@ -64,17 +72,21 @@
 }
 
 .dark {
-  /* 深色模式品牌色改为亮紫，在暗底上更跳、更年轻 */
+  /* 深色模式品牌色改为明亮天空蓝，在暗底上更通透 */
   --vp-c-brand-1: #9ed8f5;
   --vp-c-brand-2: #7cc4e8;
   --vp-c-brand-3: #5aa8d0;
   --vp-c-brand-soft: rgba(124, 196, 232, 0.18);
 
-  --c-blue: #7cc4e8;
-  --c-violet: #8fd694;
-  --c-pink: #f2d09a;
+  --c-sky: #7cc4e8;
+  --c-leaf: #8fd694;
+  --c-cream: #f2d09a;
 
-  /* 深色模式下线条用亮紫，保证在暗底上看得清 */
+  /* 深色模式标签底色也用亮绿与亮蓝（暗底上深色底会糊） */
+  --c-notes: #7fc97f;
+  --c-life: #6fb6de;
+
+  /* 深色模式下线条用亮绿，保证在暗底上看得清 */
   --c-line: #8fd694;
 
   --grad-brand: linear-gradient(120deg, #9ed8f5 0%, #8fd694 55%, #cfe3a0 100%);
@@ -318,17 +330,17 @@ body:not(:has(.VPHome)) {
   background: var(--c-line, #6fae6f);
 }
 
-/* 三张卡片顶边分别用蓝 / 紫 / 粉的纯色 */
+/* 三张卡片顶边分别用草绿 / 天空蓝 / 暖奶油的纯色 */
 .VPFeatures .VPFeature:nth-child(1)::before {
-  background: var(--c-blue);
+  background: var(--c-leaf);
 }
 
 .VPFeatures .VPFeature:nth-child(2)::before {
-  background: var(--c-violet);
+  background: var(--c-sky);
 }
 
 .VPFeatures .VPFeature:nth-child(3)::before {
-  background: var(--c-pink);
+  background: var(--c-cream);
 }
 
 .VPFeatures .VPFeature:hover {

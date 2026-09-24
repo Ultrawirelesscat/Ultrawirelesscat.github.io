@@ -1,7 +1,7 @@
 ---
 title: 文章标题写这里
 date: 2026-01-01
-category: 编程笔记
+category: 笔记
 tags: [题解, PDF]
 description: 一句话摘要，会显示在列表卡片上。
 ---

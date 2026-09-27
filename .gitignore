@@ -20,3 +20,6 @@ Thumbs.db
 # 日志
 *.log
 npm-debug.log*
+
+# VitePress 构建中断时留下的临时文件
+*.timestamp-*

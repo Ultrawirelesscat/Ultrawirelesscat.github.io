@@ -32,7 +32,12 @@ defineProps({
         <span v-if="showCategory && post.category" class="post-card__category">
           {{ post.category }}
         </span>
-        <span v-for="tag in post.tags" :key="tag" class="post-card__tag">#{{ tag }}</span>
+        <a
+          v-for="tag in post.tags"
+          :key="tag"
+          class="post-card__tag"
+          :href="withBase(`/tags/${tag}`)"
+        >#{{ tag }}</a>
       </p>
 
       <p class="post-card__excerpt">{{ post.description || post.excerpt }}</p>
@@ -145,7 +150,17 @@ defineProps({
 }
 
 .post-card__tag {
+  padding: 1px 8px;
+  border-radius: 999px;
+  background: var(--grad-brand-soft, rgba(56, 189, 248, 0.12));
   color: var(--vp-c-text-3);
+  text-decoration: none;
+  transition: color 0.2s, background-color 0.2s;
+}
+
+.post-card__tag:hover {
+  color: var(--vp-c-brand-1);
+  background: var(--grad-brand-soft, rgba(56, 189, 248, 0.26));
 }
 
 .post-card__excerpt {

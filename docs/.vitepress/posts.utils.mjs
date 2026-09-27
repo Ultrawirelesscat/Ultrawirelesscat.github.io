@@ -29,3 +29,57 @@ export function groupByYear(list) {
   }
   return [...map.entries()].sort((a, b) => b[0] - a[0])
 }
+
+/**
+ * frontmatter 里的 tags 可能是数组，也可能被写成单个字符串或逗号分隔的字符串。
+ * 统一整理成去空、去重的字符串数组，避免页面上把 "随笔, 记录" 按字符拆开显示。
+ */
+export function normalizeTags(value) {
+  if (!value) return []
+  const list = Array.isArray(value) ? value : String(value).split(/[,，]/)
+  return [...new Set(list.map((tag) => String(tag).trim()).filter(Boolean))]
+}
+
+/**
+ * content loader 给出的原始条目 → 页面里使用的文章对象。
+ *
+ * 没写 date（或明确写成 false）的文章视为未发布，返回 null 交给调用方过滤掉，
+ * 这样「侧边栏、标签页、归档页」对『已发布』的判断始终一致。
+ */
+export function toPost({ url, frontmatter, excerpt }) {
+  if (!frontmatter || !frontmatter.date || frontmatter.date === false) return null
+
+  return {
+    title: frontmatter.title || url,
+    url,
+    category: frontmatter.category || '随笔',
+    date: frontmatter.date,
+    tags: normalizeTags(frontmatter.tags),
+    description: frontmatter.description || '',
+    excerpt: (excerpt || '').replace(/<[^>]+>/g, '').trim(),
+    time: toTime(frontmatter.date),
+    displayDate: formatTime(frontmatter.date)
+  }
+}
+
+/**
+ * 把文章列表聚合成标签列表，每项形如 { tag, count, posts }。
+ *
+ * 传入的列表本身已按日期倒序，所以每个标签下的文章也保持倒序；
+ * 排序规则：文章多的在前，同样多时按标签名排。
+ */
+export function collectTags(posts) {
+  const map = new Map()
+
+  for (const post of posts) {
+    if (!post) continue
+    for (const tag of normalizeTags(post.tags)) {
+      if (!map.has(tag)) map.set(tag, [])
+      map.get(tag).push(post)
+    }
+  }
+
+  return [...map.entries()]
+    .map(([tag, list]) => ({ tag, count: list.length, posts: list }))
+    .sort((a, b) => b.count - a.count || a.tag.localeCompare(b.tag, 'zh-Hans-CN'))
+}

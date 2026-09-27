@@ -1,5 +1,6 @@
 import { defineConfig } from 'vitepress'
 import { hasGit } from './git.mjs'
+import { buildSidebar } from './sidebar.mjs'
 
 /**
  * 部署到 GitHub Pages 时，base 取决于仓库类型：
@@ -51,45 +52,15 @@ export default defineConfig({
       { text: '笔记', link: '/blog/tech/', activeMatch: '/blog/tech/' },
       { text: '生活随笔', link: '/blog/life/', activeMatch: '/blog/life/' },
       { text: '归档', link: '/archive' },
+      { text: '标签', link: '/tags/' },
       { text: '关于', link: '/about' }
     ],
 
-    sidebar: {
-      '/blog/tech/': [
-        {
-          text: '笔记',
-          items: [
-            { text: '全部文章', link: '/blog/tech/' },
-            { text: '20260923物理', link: '/blog/tech/20260923物理' },
-            { text: '20260922debug笔记', link: '/blog/tech/20260922debug笔记' },
-            { text: '20260921数学', link: '/blog/tech/20260921数学' },
-            { text: '20260920数学', link: '/blog/tech/20260920数学' },
-            { text: 'PDF 预览演示', link: '/blog/tech/pdf-demo' },
-            { text: 'whk', link: '/blog/tech/whk' }
-          ]
-        }
-      ],
-      '/blog/life/': [
-        {
-          text: '生活随笔',
-          items: [
-            { text: '全部文章', link: '/blog/life/' },
-            { text: '我说最慢的快递就是寄宿高中生的快递了', link: '/blog/life/package' },
-            { text: '感动哭了', link: '/blog/life/moved-to-tears' },
-            { text: '十七岁啦！', link: '/blog/life/17birthday' }
-          ]
-        }
-      ],
-      '/blog/': [
-        {
-          text: '全部文章',
-          items: [
-            { text: '笔记', link: '/blog/tech/' },
-            { text: '生活随笔', link: '/blog/life/' }
-          ]
-        }
-      ]
-    },
+    /*
+     * 侧边栏由 sidebar.mjs 扫描 docs/blog 自动生成（按日期倒序）。
+     * 以前这里是一行行手写的，新增文章要记得回来加，忘了侧边栏就缺一条。
+     */
+    sidebar: buildSidebar(),
 
     socialLinks: [
       { icon: 'github', link: 'https://github.com/Ultrawirelesscat' }

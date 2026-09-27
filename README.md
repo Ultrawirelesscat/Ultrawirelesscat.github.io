@@ -40,17 +40,24 @@ npm run preview # 本地预览构建产物
 my-blog/
 ├─ docs/
 │  ├─ .vitepress/
-│  │  ├─ config.mts              # 站点配置：标题、导航、侧边栏、搜索
+│  │  ├─ config.mts              # 站点配置：标题、导航、搜索
+│  │  ├─ sidebar.mjs             # 扫 blog/ 目录，自动生成侧边栏
 │  │  ├─ posts.data.mjs          # 自动扫描并排序所有文章
+│  │  ├─ tags.data.mjs           # 按标签聚合文章
+│  │  ├─ posts.utils.mjs         # 日期、标签等纯工具函数
 │  │  └─ theme/
 │  │     ├─ index.ts             # 主题入口，注册全局组件
 │  │     ├─ custom.css           # 自定义样式（主题色在这里改）
 │  │     └─ components/
 │  │        ├─ PostList.vue      # 文章卡片列表
-│  │        └─ ArchiveList.vue   # 按年份归档
+│  │        ├─ ArchiveList.vue   # 按年份归档
+│  │        └─ TagCloud.vue      # 标签云
 │  ├─ blog/
 │  │  ├─ tech/                   # 笔记
 │  │  └─ life/                   # 生活随笔
+│  ├─ tags/
+│  │  ├─ index.md                # 标签总览页
+│  │  └─ [tag].md                # 每个标签一页（构建时按文章里的标签自动生成）
 │  ├─ public/                    # 静态资源（logo.svg、favicon.svg、图片）
 │  ├─ index.md                   # 首页
 │  ├─ archive.md                 # 归档页
@@ -77,6 +84,9 @@ description: 一句话摘要，会显示在列表卡片上。
 
 保存后首页、列表页、归档页会自动更新（`posts.data.mjs` 扫描 `blog/**/*.md`
 并按 `date` 倒序排列）。
+
+侧边栏也会**自动**多出这一条（`sidebar.mjs` 扫同一个目录，按日期倒序），
+不需要再去 `config.mts` 里手写一行。标签同理：`tags` 里写了什么，`/tags/` 下就有什么。
 
 > 加了 frontmatter 的页面才进入文章列表；像 `blog/tech/index.md` 这种栏目首页
 > 没有 `date`，因此不会被当成文章。
@@ -147,7 +157,8 @@ git push
 | --- | --- |
 | 站点标题、描述 | `docs/.vitepress/config.mts` 里的 `title` / `description`（`themeConfig.siteTitle` 要同步改） |
 | 首页大标题 | `docs/index.md` 的 `hero.name` |
-| 导航、侧边栏 | `docs/.vitepress/config.mts` 的 `themeConfig.nav` / `sidebar` |
+| 导航 | `docs/.vitepress/config.mts` 的 `themeConfig.nav` |
+| 栏目与侧边栏 | `docs/.vitepress/sidebar.mjs` 里的 `SECTIONS`（加一个栏目就在那里加一行） |
 | 主题色 | `docs/.vitepress/theme/custom.css` 里的 `--vp-c-brand-*`（当前是浅蓝色系） |
 | GitHub 链接 | `docs/.vitepress/config.mts` 的 `socialLinks` |
 | 个人介绍 | `docs/about.md` |
@@ -220,6 +231,25 @@ git push
 | 首页/列表没更新 | `.vitepress/cache` 缓存，或 dev 与 build 抢缓存 | 删掉 `docs/.vitepress/cache` 再刷新；构建前先关掉 dev |
 | 文章列表里看不到，但站内搜索能搜到 | 用了 `date: false`，它只隐藏列表、不隐藏搜索 | 真要下架就直接删文件，或用 `srcExclude` 排除 |
 
+## 标签页
+
+标签来自文章 frontmatter 里的 `tags`：
+
+```md
+tags: [随笔, 记录]
+```
+
+- `/tags/` 是总览页，列出所有标签和各自的文章数
+- 每个标签自动拥有独立页面（`/tags/随笔`、`/tags/记录`），列出该标签下的全部文章
+- 文章卡片上的 `#标签` 直接链到对应的标签页
+- 导航栏和 `/tags/` 页的侧边栏也会自动列出所有标签
+
+**都不需要手工维护**：文章里写了什么标签，页面、侧边栏里就出现什么；
+某个标签下的文章全部删掉后，这个标签也会自动消失。
+
+> `tags` 和 `category` 是两回事：`category` 决定文章进哪个栏目（只能有一个，
+> 且由文件所在目录自动决定），`tags` 是给人看的横向分类（可以有多个）。
+
 ## 在文章里嵌入 PDF
 
 适合放题解讲义、试卷、笔记扫描件这类内容。
@@ -253,13 +283,10 @@ docs/public/pdfs/solution-2026.pdf
 <PdfViewer src="/pdfs/xxx.pdf" />
 ```
 
-### 3. 加进侧边栏（可选）
+### 3. 侧边栏会自动收录
 
-想让它在侧边栏能点到，在 `docs/.vitepress/config.mts` 对应栏目里加一行：
-
-```ts
-{ text: '2026 集训题解', link: '/blog/tech/solution' }
-```
+文章放进 `docs/blog/tech/` 或 `docs/blog/life/` 后，下次构建侧边栏就会自动多出这一条
+（`sidebar.mjs` 扫描目录生成），不需要手改配置。
 
 ### 注意事项
 

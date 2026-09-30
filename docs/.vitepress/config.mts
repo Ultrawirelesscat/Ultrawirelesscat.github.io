@@ -1,4 +1,5 @@
 import { defineConfig } from 'vitepress'
+import mathjax3 from 'markdown-it-mathjax3'
 import { hasGit } from './git.mjs'
 import { buildSidebar } from './sidebar.mjs'
 
@@ -40,7 +41,15 @@ export default defineConfig({
 
   markdown: {
     lineNumbers: true,
-    theme: { light: 'github-light', dark: 'github-dark' }
+    theme: { light: 'github-light', dark: 'github-dark' },
+    /*
+     * LaTeX 公式支持（MathJax）。
+     * 行内写法 $x^2$，块级写法 $$...$$。
+     * 注意：数学里的下划线在 Markdown 里会被当成强调语法，
+     * 例如 a_1 写成 $a_1$ 是安全的，但裸写 a_1 会变成斜体，
+     * 所以公式一律用 $ 包起来。
+     */
+    math: mathjax3
   },
 
   themeConfig: {

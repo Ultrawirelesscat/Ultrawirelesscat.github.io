@@ -2,6 +2,24 @@
  * 文章相关的纯工具函数（不依赖 VitePress，可以随便 import）。
  */
 
+/**
+ * 「隐藏分类」的目录前缀。
+ *
+ * 放在 docs/blog/private/ 下的文章：
+ *   - 网址正常，直接访问能打开，链接可以分享给别人
+ *   - 不出现在首页「最近更新」、全部文章、归档页、标签页
+ *   - 不进站内搜索索引
+ *   - 不进侧边栏（侧边栏只扫 posts.scan.mjs 的 SECTIONS 里登记的栏目）
+ *
+ * 想公开发布：把文件从 private/ 移到 tech/ 或 life/ 即可。
+ */
+export const HIDDEN_PREFIX = '/blog/private/'
+
+/** 判断一个文章的 url 是否属于隐藏分类 */
+export function isHidden(url) {
+  return typeof url === 'string' && url.startsWith(HIDDEN_PREFIX)
+}
+
 function pad(n) {
   return String(n).padStart(2, '0')
 }
@@ -43,11 +61,13 @@ export function normalizeTags(value) {
 /**
  * content loader 给出的原始条目 → 页面里使用的文章对象。
  *
- * 没写 date（或明确写成 false）的文章视为未发布，返回 null 交给调用方过滤掉，
- * 这样「侧边栏、标签页、归档页」对『已发布』的判断始终一致。
+ * 没写 date（或明确写成 false）的文章视为未发布；
+ * 隐藏分类（blog/private/）下的文章也返回 null。
+ * 两者都在这里拦掉，首页／归档／标签页的判断就始终一致。
  */
 export function toPost({ url, frontmatter, excerpt }) {
   if (!frontmatter || !frontmatter.date || frontmatter.date === false) return null
+  if (isHidden(url)) return null
 
   return {
     title: frontmatter.title || url,

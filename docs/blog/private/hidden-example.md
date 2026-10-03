@@ -3,6 +3,9 @@ title: 这是一个隐藏分类的示例文章
 date: 2026-09-30
 category: 隐藏
 tags: [示例]
+sidebar: false
+prev: false
+next: false
 ---
 
 这篇文章放在 `docs/blog/private/` 下，属于**隐藏分类**。

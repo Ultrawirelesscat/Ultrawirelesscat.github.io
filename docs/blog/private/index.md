@@ -1,5 +1,8 @@
 ---
 title: 隐藏分类
+sidebar: false
+prev: false
+next: false
 ---
 
 # 隐藏分类

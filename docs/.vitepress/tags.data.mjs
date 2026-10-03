@@ -1,8 +1,10 @@
 import { createContentLoader } from 'vitepress'
-import { collectTags, toPost } from './posts.utils.mjs'
+import { collectTags, isHidden, toPost } from './posts.utils.mjs'
 
 /**
  * 按标签聚合所有已发布文章，供 /tags/ 总览页和每个标签的归档页使用。
+ *
+ * 隐藏分类（blog/private/）的文章被排除，所以它们的标签不会出现在标签页上。
  *
  * 结果是 [{ tag, count, posts }, ...]，其中 posts 与 posts.data.mjs 里的文章对象同构，
  * 所以标签页可以直接丢给 <PostList :posts="..." /> 渲染。
@@ -16,7 +18,7 @@ export default createContentLoader('blog/**/*.md', {
     return collectTags(
       raw
         .map(toPost)
-        .filter(Boolean)
+        .filter((post) => post && !isHidden(post.url))
         .sort((a, b) => b.time - a.time)
     )
   }

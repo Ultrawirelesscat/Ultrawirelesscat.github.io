@@ -61,13 +61,15 @@ export function normalizeTags(value) {
 /**
  * content loader 给出的原始条目 → 页面里使用的文章对象。
  *
- * 没写 date（或明确写成 false）的文章视为未发布；
- * 隐藏分类（blog/private/）下的文章也返回 null。
- * 两者都在这里拦掉，首页／归档／标签页的判断就始终一致。
+ * 没写 date（或明确写成 false）的文章视为未发布，返回 null。
+ *
+ * 注意：这里**不过滤**隐藏分类（blog/private/）。隐藏与否交给各个 loader：
+ *   - posts.data.mjs  → 排除隐藏文章（首页、全部文章、归档、栏目页用）
+ *   - hidden.data.mjs → 只保留隐藏文章（隐藏分类自己的首页用）
+ * 若在这里统一过滤掉，隐藏分类首页就拿不到数据了。
  */
 export function toPost({ url, frontmatter, excerpt }) {
   if (!frontmatter || !frontmatter.date || frontmatter.date === false) return null
-  if (isHidden(url)) return null
 
   return {
     title: frontmatter.title || url,

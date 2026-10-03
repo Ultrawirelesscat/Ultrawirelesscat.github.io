@@ -1,9 +1,13 @@
 import { createContentLoader } from 'vitepress'
-import { toPost } from './posts.utils.mjs'
+import { isHidden, toPost } from './posts.utils.mjs'
 
 /**
  * 扫描 docs/blog 下所有文章，提取 frontmatter，
  * 供首页、列表页、归档页调用（自动按日期倒序）。
+ *
+ * **隐藏分类（blog/private/）的文章在这里被排除**，
+ * 所以首页、全部文章、归档、栏目页都不会出现它们。
+ * 隐藏分类自己的首页用的是 hidden.data.mjs。
  *
  * 注意：VitePress 会把本文件默认导出的 loader 结果暴露成名为 `posts` 的具名导出，
  * 所以页面里写 `import { data as posts } from '.../posts.data.mjs'` 即可；
@@ -17,7 +21,7 @@ export default createContentLoader('blog/**/*.md', {
   transform(raw) {
     return raw
       .map(toPost)
-      .filter(Boolean)
+      .filter((post) => post && !isHidden(post.url))
       .sort((a, b) => b.time - a.time)
   }
 })

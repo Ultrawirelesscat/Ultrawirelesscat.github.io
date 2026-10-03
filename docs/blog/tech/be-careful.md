@@ -22,3 +22,10 @@ friend operator + (const Node x,const Node y) {
 还有什么abs(__int128)
 
 求求你了别挂分了。。。
+
+下辈子都调不出来代码了
+
+经典
+
+lower_bound(lsh+1,lsh+n+1,x)
+

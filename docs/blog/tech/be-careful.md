@@ -29,3 +29,6 @@ friend operator + (const Node x,const Node y) {
 
 lower_bound(lsh+1,lsh+n+1,x)
 
+经典ub之
+
+1ull<<64 a[++tot]=tot 1<<31 vector失效

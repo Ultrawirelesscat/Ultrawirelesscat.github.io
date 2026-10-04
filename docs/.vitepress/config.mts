@@ -80,6 +80,14 @@ export default defineConfig({
     search: {
       provider: 'local',
       options: {
+        /*
+         * 隐藏分类（blog/private/）的文章**保留在搜索索引里**。
+         * 这是有意的：隐藏只影响「列表展示」，不影响搜索。
+         * VitePress 默认就会索引所有页面，所以这里不需要写任何额外配置；
+         * 如果哪天想改成「搜不到」，可以加：
+         *   _render: (src, env, md) =>
+         *     env.relativePath.startsWith(HIDDEN_PREFIX.slice(1)) ? '' : md.render(src, env)
+         */
         translations: {
           button: { buttonText: '搜索文档', buttonAriaLabel: '搜索文档' },
           modal: {

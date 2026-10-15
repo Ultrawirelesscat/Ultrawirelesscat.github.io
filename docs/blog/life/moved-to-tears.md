@@ -1,6 +1,6 @@
 ---
 title: 感动哭了
-date: 2026.9.17
+date: 2026-09-17
 category: 生活随笔
 tags: [随笔, 记录]
 description: 化学老师我真的太爱你了

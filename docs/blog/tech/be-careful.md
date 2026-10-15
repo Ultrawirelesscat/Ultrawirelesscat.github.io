@@ -1,3 +1,9 @@
+---
+title: 易错点
+date: 2026-10-04
+category: 笔记
+---
+
 一些windows和linux环境不同的地方。
 
 我怎么高二了。。。

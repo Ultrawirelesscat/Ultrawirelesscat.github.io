@@ -1,6 +1,6 @@
 ---
 title: 十七岁啦！
-date: 2026.9.15
+date: 2026-09-15
 category: 生活随笔
 tags: [随笔, 记录]
 description: 我的十七岁生日！

@@ -54,7 +54,9 @@ my-blog/
 │  │        └─ TagCloud.vue      # 标签云
 │  ├─ blog/
 │  │  ├─ tech/                   # 笔记
-│  │  └─ life/                   # 生活随笔
+│  │  ├─ life/                   # 生活随笔
+│  │  ├─ listening/              # 听歌
+│  │  └─ novel/                  # 小说
 │  ├─ tags/
 │  │  ├─ index.md                # 标签总览页
 │  │  └─ [tag].md                # 每个标签一页（构建时按文章里的标签自动生成）
@@ -304,6 +306,8 @@ docs/public/pdfs/solution-2026.pdf
 | --- | --- | --- |
 | `docs/blog/life/xxx.md` | `category: 生活随笔` | `/blog/life/xxx` |
 | `docs/blog/tech/xxx.md` | `category: 笔记` | `/blog/tech/xxx` |
+| `docs/blog/listening/xxx.md` | `category: 听歌` | `/blog/listening/xxx` |
+| `docs/blog/novel/xxx.md` | `category: 小说` | `/blog/novel/xxx` |
 
 所以：
 

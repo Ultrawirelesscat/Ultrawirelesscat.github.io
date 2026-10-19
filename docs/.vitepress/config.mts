@@ -60,6 +60,8 @@ export default defineConfig({
       { text: '首页', link: '/' },
       { text: '笔记', link: '/blog/tech/', activeMatch: '/blog/tech/' },
       { text: '生活随笔', link: '/blog/life/', activeMatch: '/blog/life/' },
+      { text: '听歌', link: '/blog/listening/', activeMatch: '/blog/listening/' },
+      { text: '小说', link: '/blog/novel/', activeMatch: '/blog/novel/' },
       { text: '归档', link: '/archive' },
       { text: '标签', link: '/tags/' },
       { text: '关于', link: '/about' }

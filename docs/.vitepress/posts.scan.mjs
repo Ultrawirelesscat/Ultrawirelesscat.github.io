@@ -19,7 +19,9 @@ const docsDir = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..')
 /** 栏目定义：新增栏目只要在这里加一行 */
 export const SECTIONS = [
   { dir: 'blog/tech', prefix: '/blog/tech/', text: '笔记' },
-  { dir: 'blog/life', prefix: '/blog/life/', text: '生活随笔' }
+  { dir: 'blog/life', prefix: '/blog/life/', text: '生活随笔' },
+  { dir: 'blog/listening', prefix: '/blog/listening/', text: '听歌' },
+  { dir: 'blog/novel', prefix: '/blog/novel/', text: '小说' }
 ]
 
 /** 去掉包裹值的成对引号 */

@@ -2,8 +2,11 @@
 #  自动补全 / 修正文章 frontmatter 里的 category 字段
 # ------------------------------------------------------------
 #  规则（按文件所在目录判断，这是唯一可靠的依据）：
-#    docs/blog/life/*.md  ->  category: 生活随笔
-#    docs/blog/tech/*.md  ->  category: 笔记
+#    docs/blog/life/*.md       ->  category: 生活随笔
+#    docs/blog/tech/*.md       ->  category: 笔记
+#    docs/blog/listening/*.md  ->  category: 听歌
+#    docs/blog/novel/*.md      ->  category: 小说
+#    （docs/blog/private/ 是隐藏分类，不参与自动补全，category 需手写）
 #
 #  行为：
 #    - 没有 category       -> 在 date 后面插入一行
@@ -28,6 +31,8 @@ Set-Location $repoRoot
 
 $lifeDir = Join-Path $repoRoot 'docs/blog/life'
 $techDir = Join-Path $repoRoot 'docs/blog/tech'
+$listeningDir = Join-Path $repoRoot 'docs/blog/listening'
+$novelDir = Join-Path $repoRoot 'docs/blog/novel'
 
 $utf8NoBom = New-Object System.Text.UTF8Encoding($false)
 $changedFiles = New-Object System.Collections.Generic.List[string]
@@ -98,6 +103,8 @@ function Fix-Directory {
 Write-Host '正在检查文章分类…'
 Fix-Directory -Dir $lifeDir -Category '生活随笔'
 Fix-Directory -Dir $techDir -Category '笔记'
+Fix-Directory -Dir $listeningDir -Category '听歌'
+Fix-Directory -Dir $novelDir -Category '小说'
 
 if ($changedFiles.Count -eq 0) {
   Write-Host '所有文章的 category 都已正确，无需修改。'

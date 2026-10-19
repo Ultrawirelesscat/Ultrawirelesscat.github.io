@@ -1,9 +1,7 @@
 ---
-
 title: 听歌
 date: 2026-10-17
-category: 笔记
-
+category: 听歌
 ---
 
 什么时候有这么多人一块听歌了？

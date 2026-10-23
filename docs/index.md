@@ -3,7 +3,7 @@ layout: home
 
 hero:
   name: Ultrawirelesscat的小站
-  text: 笔记与生活随笔
+  text: 笔记、随笔、听歌与小说
   tagline: 把学到的东西写下来，才真正属于自己
   actions:
     - theme: brand
@@ -24,11 +24,16 @@ features:
     details: 读书、旅行、日常的一些碎碎念，写给未来的自己看。
     link: /blog/life/
     linkText: 看看随笔
-  - icon: 📚
-    title: 全部归档
-    details: 按年份浏览所有文章，找什么都不用翻列表。
-    link: /archive
-    linkText: 前往归档
+  - icon: 🎧
+    title: 听歌
+    details: 歌单、循环过的曲子，以及那些听着听着就走神的时刻。
+    link: /blog/listening/
+    linkText: 去听歌
+  - icon: 📖
+    title: 小说
+    details: 读过的故事、想写的桥段，和那些看完之后缓不过来的结尾。
+    link: /blog/novel/
+    linkText: 看小说
 ---
 
 <script setup>
@@ -42,6 +47,6 @@ import { data as posts } from './.vitepress/posts.data.mjs'
 
 <PostList :posts="posts.slice(0, 5)" />
 
-[查看全部文章 →](/blog/)
+[查看全部文章 →](/blog/) · [按年份浏览归档 →](/archive)
 
 </template>

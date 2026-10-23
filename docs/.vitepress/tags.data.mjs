@@ -13,7 +13,8 @@ import { collectTags, isHidden, toPost } from './posts.utils.mjs'
  *   import { data as tags } from '.../tags.data.mjs'
  */
 export default createContentLoader('blog/**/*.md', {
-  excerpt: true,
+  // 摘要分隔符显式指定，避免正文里的 `---` 被误当成摘要边界（见 posts.data.mjs 的说明）
+  excerpt: '<!-- more -->',
   transform(raw) {
     return collectTags(
       raw

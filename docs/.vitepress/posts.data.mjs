@@ -17,7 +17,14 @@ import { isHidden, toPost } from './posts.utils.mjs'
  * 标签页（tags.data.mjs）也复用它，保证各处字段完全一致。
  */
 export default createContentLoader('blog/**/*.md', {
-  excerpt: true,
+  /*
+   * 摘要分隔符必须显式指定。
+   * VitePress 底层是 gray-matter，默认的 excerpt 分隔符是 frontmatter 的 `---`，
+   * 于是正文里任何一处 `---`（甚至 `------` 这种插图里的连字符）都会被当成
+   * 「摘要到此结束」，把前面几千字全塞进列表卡片（2026山东二轮省集踩过这个坑）。
+   * 改成显式标记后，只有主动写了 <!-- more --> 的文章才有摘要，其余为空。
+   */
+  excerpt: '<!-- more -->',
   transform(raw) {
     return raw
       .map(toPost)

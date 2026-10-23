@@ -1,6 +1,6 @@
 # 我的博客
 
-基于 [VitePress](https://vitepress.dev/) 的个人博客，包含**笔记**与**生活随笔**两个栏目，
+基于 [VitePress](https://vitepress.dev/) 的个人博客，包含**笔记**、**生活随笔**、**听歌**、**小说**四个栏目，
 支持全文搜索、归档页、暗色模式，并已配置 GitHub Pages 自动部署。
 
 ## 快速开始

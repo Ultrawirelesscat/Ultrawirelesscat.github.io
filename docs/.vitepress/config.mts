@@ -21,7 +21,7 @@ export default defineConfig({
   base,
   lang: 'zh-CN',
   title: 'Ultrawirelesscat的小站',
-  description: '一名学生的笔记与生活随笔',
+  description: '一名学生的笔记、随笔、听歌与小说',
 
   // 文章放在 docs/blog 下，用干净的链接
   cleanUrls: true,

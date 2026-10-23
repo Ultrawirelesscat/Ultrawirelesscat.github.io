@@ -2,8 +2,7 @@
 
 title: 完啦
 date: 2026-10-19
-category: 笔记
-
+category: 生活随笔
 ---
 
 和强省强校强机构竞争可太难了

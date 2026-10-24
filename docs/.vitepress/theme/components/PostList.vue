@@ -48,8 +48,13 @@ defineProps({
 <style scoped>
 .post-list {
   display: grid;
-  gap: 16px;
-  margin: 24px 0;
+  gap: 10px;
+  /*
+   * 自适应多列：宽屏两列、窄屏自动单列。
+   * 文章多了以后单列大卡片要翻很久，这里按容器宽度自动排列。
+   */
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  margin: 16px 0;
 }
 
 .post-list__empty {
@@ -60,8 +65,8 @@ defineProps({
   position: relative;
   overflow: hidden;
   border: 1px solid var(--card-border, var(--vp-c-divider));
-  border-radius: 14px;
-  padding: 20px 22px;
+  border-radius: 12px;
+  padding: 12px 14px;
   /* 蓝底页面上的白色卡片，靠明度差形成层次 */
   background: var(--card-surface, var(--vp-c-bg-soft));
   box-shadow: var(--card-shadow, 0 8px 24px -12px rgba(96, 150, 96, 0.28));
@@ -73,7 +78,7 @@ defineProps({
   content: '';
   position: absolute;
   inset: 0 0 auto 0;
-  height: 5px;
+  height: 4px;
   background: var(--c-line, #6fae6f);
 }
 
@@ -91,14 +96,14 @@ defineProps({
 
 .post-card:hover {
   border-color: var(--vp-c-brand-1);
-  transform: translateY(-4px);
+  transform: translateY(-2px);
   box-shadow: var(--card-shadow-hover, 0 18px 40px -18px rgba(96, 150, 96, 0.42));
 }
 
 .post-card__title {
-  margin: 0 0 8px;
-  font-size: 18px;
-  line-height: 1.4;
+  margin: 0 0 4px;
+  font-size: 15px;
+  line-height: 1.45;
   border: none;
   padding: 0;
 }
@@ -113,9 +118,9 @@ defineProps({
 .post-card__title a::before {
   content: '';
   display: inline-block;
-  width: 7px;
-  height: 7px;
-  margin-right: 10px;
+  width: 6px;
+  height: 6px;
+  margin-right: 8px;
   border-radius: 50%;
   background: var(--c-line, #6fae6f);
   vertical-align: 0.18em;
@@ -129,9 +134,9 @@ defineProps({
   display: flex;
   flex-wrap: wrap;
   align-items: center;
-  gap: 10px;
-  margin: 0 0 8px;
-  font-size: 13px;
+  gap: 8px;
+  margin: 0 0 4px;
+  font-size: 12px;
   color: var(--vp-c-text-3);
 }
 
@@ -165,8 +170,13 @@ defineProps({
 
 .post-card__excerpt {
   margin: 0;
-  font-size: 14.5px;
-  line-height: 1.7;
+  font-size: 13px;
+  line-height: 1.55;
   color: var(--vp-c-text-2);
+  /* 摘要最多两行，超出省略——避免一篇文章的摘要把卡片撑得很高 */
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
 }
 </style>

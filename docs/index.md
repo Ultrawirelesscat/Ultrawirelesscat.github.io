@@ -3,7 +3,7 @@ layout: home
 
 hero:
   name: Ultrawirelesscat的小站
-  text: 笔记、随笔、听歌与小说
+  text: 竞赛、文化课、随笔、听歌与小说
   tagline: 把学到的东西写下来，才真正属于自己
   actions:
     - theme: brand
@@ -14,11 +14,16 @@ hero:
       link: /about
 
 features:
-  - icon: 💻
-    title: 笔记
-    details: 前端、Node、工具链……踩过的坑和想通的道理，都记在这里。
-    link: /blog/tech/
-    linkText: 查看笔记
+  - icon: 🏆
+    title: 竞赛
+    details: 竞赛复盘、题解与算法专题笔记。
+    link: /blog/contest/
+    linkText: 看看竞赛
+  - icon: 📘
+    title: 文化课
+    details: 语文、数学、英语、物理……文化课上的碎片笔记和吐槽。
+    link: /blog/whk/
+    linkText: 看看文化课
   - icon: 🌱
     title: 生活随笔
     details: 读书、旅行、日常的一些碎碎念，写给未来的自己看。

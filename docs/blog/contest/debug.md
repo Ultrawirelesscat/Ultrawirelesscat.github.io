@@ -1,7 +1,7 @@
 ---
 title: 调代码笔记
 date: 2026-10-04
-category: 笔记
+category: 竞赛
 ---
 
 1. 树剖重儿子有没有continue

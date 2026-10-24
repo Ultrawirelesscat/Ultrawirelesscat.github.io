@@ -3,7 +3,8 @@
 # ------------------------------------------------------------
 #  规则（按文件所在目录判断，这是唯一可靠的依据）：
 #    docs/blog/life/*.md       ->  category: 生活随笔
-#    docs/blog/tech/*.md       ->  category: 笔记
+#    docs/blog/contest/*.md    ->  category: 竞赛
+#    docs/blog/whk/*.md        ->  category: 文化课
 #    docs/blog/listening/*.md  ->  category: 听歌
 #    docs/blog/novel/*.md      ->  category: 小说
 #    （docs/blog/private/ 是隐藏分类，不参与自动补全，category 需手写）
@@ -30,7 +31,8 @@ $repoRoot = Split-Path -Parent $PSScriptRoot
 Set-Location $repoRoot
 
 $lifeDir = Join-Path $repoRoot 'docs/blog/life'
-$techDir = Join-Path $repoRoot 'docs/blog/tech'
+$contestDir = Join-Path $repoRoot 'docs/blog/contest'
+$whkDir = Join-Path $repoRoot 'docs/blog/whk'
 $listeningDir = Join-Path $repoRoot 'docs/blog/listening'
 $novelDir = Join-Path $repoRoot 'docs/blog/novel'
 
@@ -102,7 +104,8 @@ function Fix-Directory {
 
 Write-Host '正在检查文章分类…'
 Fix-Directory -Dir $lifeDir -Category '生活随笔'
-Fix-Directory -Dir $techDir -Category '笔记'
+Fix-Directory -Dir $contestDir -Category '竞赛'
+Fix-Directory -Dir $whkDir -Category '文化课'
 Fix-Directory -Dir $listeningDir -Category '听歌'
 Fix-Directory -Dir $novelDir -Category '小说'
 

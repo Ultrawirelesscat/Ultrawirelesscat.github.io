@@ -1,20 +1,20 @@
 ---
 title: 文章标题写这里
 date: 2026-01-01
-category: 笔记
+category: 竞赛
 tags: [题解, PDF]
 description: 一句话摘要，会显示在列表卡片上。
 ---
 
 <!-- ============================================================
-     PDF 文章起始文件（复制到 docs/blog/tech/ 或 life/ 后使用）
+     PDF 文章起始文件（复制到 docs/blog/contest/ 或 life/ 等栏目目录后使用）
 
      使用步骤：
        1. 把 PDF 放进 docs/public/pdfs/ ，例如 solution-2026.pdf
-       2. 复制本文件到 docs/blog/tech/ ，文件名改成英文小写
+       2. 复制本文件到 docs/blog/contest/（或对应栏目目录），文件名改成英文小写
        3. 改上面的 title / date / category / description
        4. 把下面 src 里的路径改成你的 PDF 文件名
-       5. 想加进侧边栏就在 config.mts 对应栏目加一行
+       5. 不用手动加侧边栏，sidebar.mjs 会自动收录
        6. 写完把这段注释删掉
 
      提醒：PDF 里的文字搜不到，想被搜索到就把要点写进正文。

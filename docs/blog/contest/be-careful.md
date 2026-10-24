@@ -1,7 +1,7 @@
 ---
 title: 易错点
 date: 2026-10-04
-category: 笔记
+category: 竞赛
 ---
 
 一些windows和linux环境不同的地方。

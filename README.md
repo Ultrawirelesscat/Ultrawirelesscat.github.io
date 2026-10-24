@@ -1,6 +1,6 @@
 # 我的博客
 
-基于 [VitePress](https://vitepress.dev/) 的个人博客，包含**笔记**、**生活随笔**、**听歌**、**小说**四个栏目，
+基于 [VitePress](https://vitepress.dev/) 的个人博客，包含**竞赛**、**文化课**、**生活随笔**、**听歌**、**小说**五个栏目，
 支持全文搜索、归档页、暗色模式，并已配置 GitHub Pages 自动部署。
 
 ## 快速开始
@@ -53,7 +53,8 @@ my-blog/
 │  │        ├─ ArchiveList.vue   # 按年份归档
 │  │        └─ TagCloud.vue      # 标签云
 │  ├─ blog/
-│  │  ├─ tech/                   # 笔记
+│  │  ├─ contest/                # 竞赛
+│  │  ├─ whk/                    # 文化课
 │  │  ├─ life/                   # 生活随笔
 │  │  ├─ listening/              # 听歌
 │  │  └─ novel/                  # 小说
@@ -70,13 +71,14 @@ my-blog/
 
 ## 怎么发一篇新文章
 
-在 `docs/blog/tech/` 或 `docs/blog/life/` 下新建 `.md` 文件，开头写 frontmatter：
+在 `docs/blog/contest/`（竞赛）、`docs/blog/whk/`（文化课）、`docs/blog/life/`（生活随笔）、
+`docs/blog/listening/`（听歌）、`docs/blog/novel/`（小说）下新建 `.md` 文件，开头写 frontmatter：
 
 ```md
 ---
 title: 文章标题
 date: 2025-01-20
-category: 笔记      # 笔记 / 生活随笔
+category: 竞赛      # 竞赛 / 文化课 / 生活随笔 / 听歌 / 小说
 tags: [标签一, 标签二]
 description: 一句话摘要，会显示在列表卡片上。
 ---
@@ -90,7 +92,7 @@ description: 一句话摘要，会显示在列表卡片上。
 侧边栏也会**自动**多出这一条（`sidebar.mjs` 扫同一个目录，按日期倒序），
 不需要再去 `config.mts` 里手写一行。标签同理：`tags` 里写了什么，`/tags/` 下就有什么。
 
-> 加了 frontmatter 的页面才进入文章列表；像 `blog/tech/index.md` 这种栏目首页
+> 加了 frontmatter 的页面才进入文章列表；像 `blog/contest/index.md` 这种栏目首页
 > 没有 `date`，因此不会被当成文章。
 
 ### 文章里放图片
@@ -214,7 +216,7 @@ git push
 
 **用法**：
 
-1. 复制 `docs/_drafts/_模板.md` 到 `docs/blog/life/` 或 `docs/blog/tech/`
+1. 复制 `docs/_drafts/_模板.md` 到 `docs/blog/life/`、`docs/blog/contest/` 等栏目目录
 2. 文件名改成英文小写，例如 `my-first-post.md`
 3. 改 `title` / `date` / `category` / `tags` / `description`，然后写正文
 4. 保存后在浏览器刷新即可看到
@@ -223,7 +225,7 @@ git push
 这个文件夹里的内容**完全不参与构建** —— 本地能看到文件，但不会被发布、
 不会被站内搜索索引、网址也是 404。所以草稿和模板都可以放心提交到仓库备份。
 
-想把草稿发布出去，把文件从 `_drafts/` 移动到 `docs/blog/life/`（或 `tech/`）即可。
+想把草稿发布出去，把文件从 `_drafts/` 移动到 `docs/blog/life/`（或 `contest/`、`whk/` 等栏目目录）即可。
 
 **写文章常踩的三个坑**：
 
@@ -304,8 +306,9 @@ docs/public/pdfs/solution-2026.pdf
 
 | 文件位置 | 自动写入的分类 | 网址前缀 |
 | --- | --- | --- |
+| `docs/blog/contest/xxx.md` | `category: 竞赛` | `/blog/contest/xxx` |
+| `docs/blog/whk/xxx.md` | `category: 文化课` | `/blog/whk/xxx` |
 | `docs/blog/life/xxx.md` | `category: 生活随笔` | `/blog/life/xxx` |
-| `docs/blog/tech/xxx.md` | `category: 笔记` | `/blog/tech/xxx` |
 | `docs/blog/listening/xxx.md` | `category: 听歌` | `/blog/listening/xxx` |
 | `docs/blog/novel/xxx.md` | `category: 小说` | `/blog/novel/xxx` |
 
@@ -317,8 +320,8 @@ docs/public/pdfs/solution-2026.pdf
 - 修正后如果产生了提交，流程会自动重新触发一次部署，保证内容上线
 
 > **重要前提**：分类和目录必须一致。因为 VitePress 的网址是由目录决定的
-> （`life/` 就是 `/blog/life/`），如果一篇文章想归到「笔记」栏目，
-> **它的文件必须放在 `docs/blog/tech/` 下**，不能放在 `life/` 里靠 `category` 硬指。
+> （`life/` 就是 `/blog/life/`），如果一篇文章想归到「竞赛」栏目，
+> **它的文件必须放在 `docs/blog/contest/` 下**，不能放在 `life/` 里靠 `category` 硬指。
 > 放错目录时自动流程会把分类改成和目录一致。
 
 ### 本地也能用同一个脚本
@@ -326,7 +329,7 @@ docs/public/pdfs/solution-2026.pdf
 不想等 CI，推送前想先修好：
 
 ```powershell
-cd D:\agent-test\my-blog
+# 在仓库根目录执行
 powershell -NoProfile -ExecutionPolicy Bypass -File scripts\fix-category.ps1
 ```
 

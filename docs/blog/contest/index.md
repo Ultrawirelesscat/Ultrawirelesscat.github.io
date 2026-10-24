@@ -1,10 +1,10 @@
 ---
-title: 笔记
+title: 竞赛
 ---
 
-# 笔记
+# 竞赛
 
-技术相关的学习记录、踩坑总结与源码阅读。
+竞赛复盘、题解与算法专题笔记。
 
 <script setup>
 import { data as posts } from '../../.vitepress/posts.data.mjs'
@@ -13,7 +13,7 @@ import { data as posts } from '../../.vitepress/posts.data.mjs'
 // 原因：category 是作者手写的，漏写就会默认成「随笔」，
 // 文章会莫名其妙从栏目页消失（这个问题踩过两次）。
 // 路径由文件位置决定，不会漏。
-const techPosts = posts.filter((p) => p.url.startsWith('/blog/tech/'))
+const contestPosts = posts.filter((p) => p.url.startsWith('/blog/contest/'))
 </script>
 
-<PostList :posts="techPosts" :show-category="false" />
+<PostList :posts="contestPosts" :show-category="false" />

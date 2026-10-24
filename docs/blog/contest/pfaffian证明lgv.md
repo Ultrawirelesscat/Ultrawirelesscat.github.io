@@ -2,7 +2,7 @@
 
 title: pfafian&lgv
 date: 2026-10-15
-category: 笔记
+category: 竞赛
 
 ---
 

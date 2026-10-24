@@ -6,7 +6,8 @@ name: 自动补全文章分类
 #
 # 规则（按文件所在目录判断）：
 #   docs/blog/life/*.md       ->  category: 生活随笔
-#   docs/blog/tech/*.md       ->  category: 笔记
+#   docs/blog/contest/*.md    ->  category: 竞赛
+#   docs/blog/whk/*.md        ->  category: 文化课
 #   docs/blog/listening/*.md  ->  category: 听歌
 #   docs/blog/novel/*.md      ->  category: 小说
 #   （docs/blog/private/ 是隐藏分类，不参与自动补全，category 需手写）

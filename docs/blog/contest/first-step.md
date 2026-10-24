@@ -1,7 +1,7 @@
 ---
 title: 请你迈出第一步
 date: 2026-10-04
-category: 笔记
+category: 竞赛
 ---
 
 1. 等于可以转 $\ge$ 不论ds还是计数

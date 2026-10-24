@@ -21,7 +21,7 @@ export default defineConfig({
   base,
   lang: 'zh-CN',
   title: 'Ultrawirelesscat的小站',
-  description: '一名学生的笔记、随笔、听歌与小说',
+  description: '一名学生的竞赛、文化课、随笔、听歌与小说',
 
   // 文章放在 docs/blog 下，用干净的链接
   cleanUrls: true,
@@ -58,7 +58,8 @@ export default defineConfig({
 
     nav: [
       { text: '首页', link: '/' },
-      { text: '笔记', link: '/blog/tech/', activeMatch: '/blog/tech/' },
+      { text: '竞赛', link: '/blog/contest/', activeMatch: '/blog/contest/' },
+      { text: '文化课', link: '/blog/whk/', activeMatch: '/blog/whk/' },
       { text: '生活随笔', link: '/blog/life/', activeMatch: '/blog/life/' },
       { text: '听歌', link: '/blog/listening/', activeMatch: '/blog/listening/' },
       { text: '小说', link: '/blog/novel/', activeMatch: '/blog/novel/' },

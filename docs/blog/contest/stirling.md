@@ -2,8 +2,7 @@
 
 title: 斯特林数
 date: 2026-10-29
-category: 算法
-
+category: 竞赛
 ---
 
 CF1097G
